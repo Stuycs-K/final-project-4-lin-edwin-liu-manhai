@@ -11,7 +11,7 @@ info
 info
 
 
-## GROUP MEMBER 2
+## GROUP MEMBER 2: Edwin Lin
 
 ### date x
 
