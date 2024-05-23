@@ -11,7 +11,7 @@ We started on branching and figuring out this all works.
 info
 
 
-## GROUP MEMBER 2
+## GROUP MEMBER 2: Edwin Lin
 
 ### date x
 
