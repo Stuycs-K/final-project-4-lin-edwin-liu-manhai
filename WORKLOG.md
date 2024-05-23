@@ -6,9 +6,9 @@
 
 We started on branching and figuring out this all works. 
 
-### date y
+### Date: 5/23/24
 
-info
+Implemented the methods inside Game, Pokemon and Trainer. Need to write the methods next.
 
 
 ## GROUP MEMBER 2: Edwin Lin
