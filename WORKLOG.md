@@ -1,10 +1,10 @@
 # Work Log
 
-## GROUP MEMBER 1
+## GROUP MEMBER 1: Manhai Liu
 
-### date x
+### Date: 5/22/24
 
-info
+We started on branching and figuring out this all works. 
 
 ### date y
 
