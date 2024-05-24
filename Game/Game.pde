@@ -1,5 +1,7 @@
 public class Game{
-  public void drawText(String message, int startRow, int startCol, int length){
+  public void drawText(String message, int startRow, int startCol, int x, int y){
+    text.go(startRow, startCol);
+    text(message,x,y);
   }
   
   public void TextBox(int row, int col, int width, int height, String text){
