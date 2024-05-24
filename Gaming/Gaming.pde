@@ -8,6 +8,15 @@ public class Game{
   }
   
   public String colorByPercent(int hp, int maxHP){
+    String output = "%2s" + hp+""+"/"+"%2s" + maxHP+"";
+    double percent=hp/((double) maxHP);
+    if (percent<0.25) {
+      output.color(RED);
+    }
+    else if (percent<0.75) {
+      output.color(YELLOW);
+    }
+    return output;
   }
   
   public void drawOverworld(){
@@ -35,6 +44,14 @@ public class Game{
   }
   
   public void run(int opponentTeam, int playerTeam){
+  }
+  
+  public void drawBackground(){
+    
+  }
+  
+  public void drawScreen(){
+    size(1000,1000);
   }
   
 }

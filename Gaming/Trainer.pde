@@ -10,8 +10,8 @@ public class Trainer{
   public ArrayList getTeam(int partynumber){
   }
   
-  public void addTeam(Pokemon new){
-  }
+  //public void addTeam(Pokemon new){
+  //}
   
     
 }
