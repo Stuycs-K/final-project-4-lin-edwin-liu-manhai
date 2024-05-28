@@ -13,39 +13,42 @@ public class Game{
     fill(255 * percentage, 255 * (1 - percentage), 0);
   }
   
-  public void drawOverworld(){
-  }
+  //public void drawOverworld(){
+  //}
   
-  public void switchOverworld(){
-  }
+  //public void switchOverworld(){
+  //}
   
-  public void drawBattle(Trainer opponent, Trainer player){
-  }
+  //public void drawBattle(Trainer opponent, Trainer player){
+  /}
   
-  public void switchBattle(){
-  }
+  //public void switchBattle(){
+  //}
   
-  public Trainer createRandomTrainer(){
-  }
+  //public Trainer createRandomTrainer(){
+  /}
   
-  public Pokemon getRandomEnemyAttack(Trainer opponent, Trainer player){
-  }
+  //public Pokemon getRandomEnemyAttack(Trainer opponent, Trainer player){
+  //}
   
-  public void quit(){
-  }
+  //public void quit(){
+  //}
   
   public void clearArea(int height, int weight, int row, int col){
+    fill(200);
+    rect(col, row, width, height);
   }
   
-  public void run(int opponentTeam, int playerTeam){
-  }
+  //public void run(int opponentTeam, int playerTeam){
+  //}
   
   public void drawBackground(){
     background(200);    
   }
   
   public void drawScreen(){
-    size(1000,1000);
+    drawBackground();
+    drawTextBox("Welcome to Epic Battle!", 50, 50, 300, 100);
   }
   
 }
