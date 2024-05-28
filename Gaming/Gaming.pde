@@ -1,22 +1,16 @@
 public class Game{
-  public void drawText(String message, int startRow, int startCol, int x, int y){
-    text.go(startRow, startCol);
-    text(message,x,y);
+  public void drawText(String message, int startRow, int startCol){
+    fill(0);
+    text(message, startCol, startRow);
   }
   
   public void TextBox(int row, int col, int width, int height, String text){
+    rect(col,row,width,height);
+    drawText(text, col+20, row+20);
   }
   
-  public String colorByPercent(int hp, int maxHP){
-    String output = "%2s" + hp+""+"/"+"%2s" + maxHP+"";
-    double percent=hp/((double) maxHP);
-    if (percent<0.25) {
-      output.color(RED);
-    }
-    else if (percent<0.75) {
-      output.color(YELLOW);
-    }
-    return output;
+  public String colorByPercent(float percentage){
+    fill(255 * percentage, 255 * (1 - percentage), 0);
   }
   
   public void drawOverworld(){
@@ -47,7 +41,7 @@ public class Game{
   }
   
   public void drawBackground(){
-    
+    background(200);    
   }
   
   public void drawScreen(){
