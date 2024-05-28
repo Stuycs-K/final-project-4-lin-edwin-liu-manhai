@@ -1,4 +1,5 @@
-public class Pokemon{
+import java.util.Random;
+public abstract class Pokemon{
   String name;
   String type;
   int HP;
@@ -7,19 +8,19 @@ public class Pokemon{
   int defense;
   int speed;
   
-  public String move1(Pokemon opponent){
-  }
+  public abstract String move1(Pokemon opponent){
+  };
   
-  public String move2(Pokemon opponent){
-  }
+  public abstract String move2(Pokemon opponent){
+  };
   
-  public String move3(Pokemon opponent){
-  }
+  public abstract String move3(Pokemon opponent){
+  };
   
-  public String move4(){
-  }
+  public abstract String move4(){
+  };
   
-  public void applyDamge(int amount){
+  public void applyDamage(int amount){
   }
   
   public String getName(){
