@@ -1,6 +1,5 @@
 import java.util.Random;
 public abstract class Pokemon{
-  String name;
   String type;
   int HP;
   int maxHP;
@@ -21,39 +20,47 @@ public abstract class Pokemon{
   };
   
   public void applyDamage(int amount){
-  }
-  
-  public String getName(){
+    this.HP -= amount;
   }
   
   public int getHp(){
+    return HP;
   }
   
   public int getMaxHP(){
+    return maxHP;
   }
   
   public int getAttack(){
+    return attack;
   }
   
   public int getDefense(){
+    return defense;
   }
   
   public int getSpeed(){
+    return speed;
   }
   
-  public void setHP(){
+  public void setHP(int health){
+HP = health;
   }
   
-  public void setMaxHP(){
+  public void setMaxHP(int health){
+    maxHP = health;
   }
   
-  public void setAttack(){
+  public void setAttack(int atk){
+    attack = atk;
   }
   
-  public void setDefense(){
+  public void setDefense(int def){
+    defense = def;
   }
   
-  public void setSpeed(){
+  public void setSpeed(int spd){
+    speed = spd;
   }
   
   
