@@ -2,9 +2,9 @@
 
 ## GROUP MEMBER 1: Manhai Liu
 
-### Date: 5/22/24
+### Date: 5/28/24
 
-We started on branching and figuring out this all works. 
+Started on Readme and Pokemon class. 
 
 ### Date: 5/23/24
 
