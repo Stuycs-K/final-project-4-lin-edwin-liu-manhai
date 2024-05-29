@@ -1,5 +1,5 @@
-public class Pokemon{
-  String name;
+import java.util.Random;
+public abstract class Pokemon{
   String type;
   int HP;
   int maxHP;
@@ -7,52 +7,60 @@ public class Pokemon{
   int defense;
   int speed;
   
-  public String move1(Pokemon opponent){
-  }
+  public abstract String move1(Pokemon opponent){
+  };
   
-  public String move2(Pokemon opponent){
-  }
+  public abstract String move2(Pokemon opponent){
+  };
   
-  public String move3(Pokemon opponent){
-  }
+  public abstract String move3(Pokemon opponent){
+  };
   
-  public String move4(){
-  }
+  public abstract String move4(){
+  };
   
-  public void applyDamge(int amount){
-  }
-  
-  public String getName(){
+  public void applyDamage(int amount){
+    this.HP -= amount;
   }
   
   public int getHp(){
+    return HP;
   }
   
   public int getMaxHP(){
+    return maxHP;
   }
   
   public int getAttack(){
+    return attack;
   }
   
   public int getDefense(){
+    return defense;
   }
   
   public int getSpeed(){
+    return speed;
   }
   
-  public void setHP(){
+  public void setHP(int health){
+HP = health;
   }
   
-  public void setMaxHP(){
+  public void setMaxHP(int health){
+    maxHP = health;
   }
   
-  public void setAttack(){
+  public void setAttack(int atk){
+    attack = atk;
   }
   
-  public void setDefense(){
+  public void setDefense(int def){
+    defense = def;
   }
   
-  public void setSpeed(){
+  public void setSpeed(int spd){
+    speed = spd;
   }
   
   
