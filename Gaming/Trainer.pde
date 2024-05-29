@@ -4,7 +4,7 @@ public class Trainer{
   color Color;
   ArrayList<Pokemon> team = new ArrayList<Pokemon>();
   
-  public Trainer(String name, PVector position, color colour, Pokemon[] team){
+  public Trainer(String name, PVector position, color colour, ArrayList<Pokemon> team){
     this.name = name;
     this. position = position;
     this.Color = colour;
@@ -19,8 +19,9 @@ public class Trainer{
     return team;
   }
   
-  //public void addTeam(Pokemon new){
-  //}
+  public void addTeam(Pokemon newPokemon){
+    team.add(newPokemon);
+  }
   
     
 }

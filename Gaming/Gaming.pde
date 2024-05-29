@@ -1,4 +1,4 @@
-public class Game{
+class Game{
   public void drawText(String message, int startRow, int startCol){
     fill(0);
     text(message, startCol, startRow);
@@ -20,13 +20,13 @@ public class Game{
   //}
   
   //public void drawBattle(Trainer opponent, Trainer player){
-  /}
+  //}
   
   //public void switchBattle(){
   //}
   
   //public Trainer createRandomTrainer(){
-  /}
+  //}
   
   //public Pokemon getRandomEnemyAttack(Trainer opponent, Trainer player){
   //}
@@ -35,12 +35,10 @@ public class Game{
   //}
   
   public void clearArea(int height, int weight, int row, int col){
-    fill(200);
-    rect(col, row, width, height);
   }
   
-  //public void run(int opponentTeam, int playerTeam){
-  //}
+  public void run(int opponentTeam, int playerTeam){
+  }
   
   public void drawBackground(){
     background(200);    
@@ -48,7 +46,7 @@ public class Game{
   
   public void drawScreen(){
     drawBackground();
-    drawTextBox("Welcome to Epic Battle!", 50, 50, 300, 100);
+    TextBox(50, 50, 300, 100, "Welcome to Epic Battle!");
   }
   
 }
