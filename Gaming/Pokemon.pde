@@ -1,5 +1,5 @@
-public class Pokemon{
-  String name;
+import java.util.Random;
+public abstract class Pokemon{
   String type;
   int HP;
   int maxHP;
@@ -7,35 +7,20 @@ public class Pokemon{
   int defense;
   int speed;
   
-  Pokemon(String name, String type, int HP, int attack, int defense, int speed) {
-    this.name = name;
-    this.type = type;
-    this.HP = HP;
-    this.attack = attack;
-    this.defense = defense;
-    this.speed = speed;
-  }
-
+  public abstract String move1(Pokemon opponent){
+  };
   
-  public String move1(Pokemon opponent){
-    
-  }
+  public abstract String move2(Pokemon opponent){
+  };
   
-  public String move2(Pokemon opponent){
-  }
+  public abstract String move3(Pokemon opponent){
+  };
   
-  public String move3(Pokemon opponent){
-  }
+  public abstract String move4(){
+  };
   
-  public String move4(){
-  }
-  
-  public void applyDamge(int amount){
-    HP -= damage;
-  }
-  
-  public String getName(){
-    return name;
+  public void applyDamage(int amount){
+    this.HP -= amount;
   }
   
   public int getHp(){
@@ -43,7 +28,7 @@ public class Pokemon{
   }
   
   public int getMaxHP(){
-    return MaxHP;
+    return maxHP;
   }
   
   public int getAttack(){
@@ -58,24 +43,24 @@ public class Pokemon{
     return speed;
   }
   
-  public void setHP(int HP){
-    this.HP = HP;
+  public void setHP(int health){
+HP = health;
   }
   
-  public void setMaxHP(int MaxHP){
-    this.MaxHP = MaxHP;
+  public void setMaxHP(int health){
+    maxHP = health;
   }
   
-  public void setAttack(int attack){
-    this.attack = attack;
+  public void setAttack(int atk){
+    attack = atk;
   }
   
-  public void setDefense(int defense){
-    this.defense = defense;
+  public void setDefense(int def){
+    defense = def;
   }
   
-  public void setSpeed(int Speed){
-    this.speed = Speed;
+  public void setSpeed(int spd){
+    speed = spd;
   }
   
   
