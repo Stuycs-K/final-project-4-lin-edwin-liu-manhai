@@ -9,7 +9,7 @@ class Game{
     drawText(text, col+20, row+20);
   }
   
-  public String colorByPercent(float percentage){
+  public void colorByPercent(float percentage){
     fill(255 * percentage, 255 * (1 - percentage), 0);
   }
   
@@ -38,6 +38,7 @@ class Game{
   }
   
   public void run(int opponentTeam, int playerTeam){
+    
   }
   
   public void drawBackground(){
@@ -47,6 +48,10 @@ class Game{
   public void drawScreen(){
     drawBackground();
     TextBox(50, 50, 300, 100, "Welcome to Epic Battle!");
+  }
+  
+  public void setup(){
+    drawScreen();
   }
   
 }
