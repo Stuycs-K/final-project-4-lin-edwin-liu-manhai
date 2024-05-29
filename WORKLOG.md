@@ -13,10 +13,11 @@ Implemented the methods inside Game, Pokemon and Trainer. Need to write the meth
 
 ## GROUP MEMBER 2: Edwin Lin
 
-### date x
+### date 5/23/24
 
-info
+Adding name and details as well as testing merge
 
-### date y
+### date 5/27/24
 
-info
+Made Pokemon into an abstract class, wrote get and set methods, made the pokemon subclasses
+
