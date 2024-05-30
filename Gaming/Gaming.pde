@@ -63,23 +63,45 @@ class Game{
     drawScreen();
   }
   
+  void opponentTurn() {
+    int move = int(random(1, 5));
+    int damage = 0;
+    if (move == 1) {
+      gymLeader.getPokemon().move1();
+      damage = gymLeader.getPokemon().move1();
+    } else if (move == 2) {
+      gymLeader.getPokemon().move2();
+      damage = gymLeader.getPokemon().move2();
+    } else if (move == 3) {
+      gymLeader.getPokemon().move3();
+      damage = gymLeader.getPokemon().move3();
+    } else if (move == 4) {
+      gymLeader.getPokemon().move4();
+      damage = gymLeader.getPokemon().move4();
+    }
+    battleMessage = opponentPokemon.name + " dealt " + damage + " damage!";
+    Textbox(100,100,100,100,battleMessage);
+  }
+
+  
   void keyPressed() {
     if (playerTurn) {
       if (key == '1') {
-        player.getPokemon.move1();
+        player.getPokemon().move1();
       } else if (key == '2') {
-        player.getPokemon.move2();
+        player.getPokemon().move2();
       } else if (key == '3') {
-        player.getPokemon.move3();
+        player.getPokemon().move3();
       } else if (key == '4') {
-        player.getPokemon.move4();
+        player.getPokemon().move4();
       }
       playerTurn = false;
-      delay(1000); // Add delay for better simulation
+      delay(1000);
       opponentTurn();
       playerTurn = true;
     }
   }
-}
   
 }
+
+  
