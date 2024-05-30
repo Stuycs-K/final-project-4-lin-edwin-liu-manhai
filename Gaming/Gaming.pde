@@ -1,7 +1,7 @@
 class Game{
   boolean playerTurn = true;
-  int Pokemon = 0; 
-  Trainer player;
+  ArrayList<Pokemon> team = new ArrayList<Pokemon>();
+  Trainer player = new Trainer("Sasuke", PVector(0,0), team);
   Trainer gymLeader;
   final int OVERWORLD = 0;
   final int BATTLE = 1;
@@ -79,12 +79,24 @@ class Game{
       gymLeader.getPokemon().move4();
       damage = gymLeader.getPokemon().move4();
     }
-    battleMessage = opponentPokemon.name + " dealt " + damage + " damage!";
-    Textbox(100,100,100,100,battleMessage);
+    String battleMessage = opponentPokemon.getName() + " dealt " + damage + " damage!";
+    TextBox(100,100,100,100,battleMessage);
   }
 
   
   void keyPressed() {
+    if (key == 'W'){
+      player.move(getPosition().add(PVector(0,-10)));
+    }
+    if (key == 'A'){
+      player.move(getPosition().add(PVector(-10,0)));
+    }
+    if (key == 'S'){
+      player.move(getPosition().add(PVector(0,10)));
+    }
+    if (key == 'D'){
+      player.move(getPosition().add(PVector(10,0)));
+    }
     if (playerTurn) {
       if (key == '1') {
         player.getPokemon().move1();
