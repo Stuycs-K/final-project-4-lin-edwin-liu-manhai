@@ -19,6 +19,11 @@ class Trainer{
     //return team;
   //}
   
+  //public ArrayList getPokemon(){
+    //return team.get(0);
+  //}
+  
+  
   //public void addTeam(Pokemon newPokemon){
     //team.add(newPokemon);
   //}
