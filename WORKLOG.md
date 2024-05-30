@@ -21,3 +21,7 @@ Adding name and details as well as testing merge
 
 Made Pokemon into an abstract class, wrote get and set methods, made the pokemon subclasses
 
+### date 5/30/24
+
+Designated moves for each Pokemon subclass
+
