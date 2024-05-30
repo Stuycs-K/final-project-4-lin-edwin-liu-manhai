@@ -2,9 +2,9 @@
 
 ## GROUP MEMBER 1: Manhai Liu
 
-### Date: 5/22/24
+### Date: 5/29/24
 
-We started on branching and figuring out this all works. 
+Started on implementing game mechanics like opponent turn and keypressed, which is basically player turn while also fixing up on errors in the code. 
 
 ### Date: 5/23/24
 
