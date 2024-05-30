@@ -49,6 +49,5 @@ Overworld Map (Manhai)
     Implement NPC and Gym Leader interactions
     Trigger battles upon player approach
 <<<<<<< HEAD
+<<<<<<< HEAD
 
-=======
->>>>>>> 7bd4e6a644eab7783702fb2e4e92488f250b1a79
