@@ -7,6 +7,7 @@ class Game{
   final int BATTLE = 1;
   int gameState = BATTLE;
   boolean battleOver = false;
+  String battleMessage;
   
   public void TextBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
@@ -24,35 +25,34 @@ class Game{
   //}
   
   public void drawBattle(Trainer opponent, Trainer player){
-  fill(0);
-  textSize(20);
-  text(player.getPokemon().name, 50, 100);
-  text("HP: " + player.getPokemon().getHP(), 50, 130);
+    fill(0);
+    textSize(20);
+    text(player.getPokemon().name, 50, 100);
+    text("HP: " + player.getPokemon().getHP(), 50, 130);
 
-  text(gymLeader.getPokemon().name, 550, 100);
-  text("HP: " + gymLeader.getPokemon().getHP(), 550, 130);
+    text(gymLeader.getPokemon().name, 550, 100);
+    text("HP: " + gymLeader.getPokemon().getHP(), 550, 130);
 
-  textSize(18);
-  text("Let's get it rumbling!", 50, 300, 700, 200);
+    textSize(18);
+    text("Let's get it rumbling!", 50, 300, 700, 200);
 
-  if (!battleOver) {
-    textSize(16);
-    text("1. Move 1", 50, 400);
-    text("2. Move 2", 50, 430);
-    text("3. Move 3", 50, 460);
-    text("4. Move 4", 50, 490);
-  }
-
-  // Check for Battle Over
-  if (player.getPokemon().getHP() <= 0 || gymLeader.getPokemon().getHP() <= 0) {
-    battleOver = true;
-    if (player.getPokemon().getHP() <= 0) {
-      battleMessage = "You lost the battle!";
-    } else {
-      battleMessage = "You won the battle!";
+    if (!battleOver) {
+      textSize(16);
+      text("1. Move 1", 50, 400);
+      text("2. Move 2", 50, 430);
+      text("3. Move 3", 50, 460);
+      text("4. Move 4", 50, 490);
+    }
+    
+    if (player.getPokemon().getHP() <= 0 || gymLeader.getPokemon().getHP() <= 0) {
+      battleOver = true;
+      if (player.getPokemon().getHP() <= 0) {
+        battleMessage = "You lost the battle!";
+      } else {
+        battleMessage = "You won the battle!";
+      }
     }
   }
-}
   
   //public void switchBattle(){
   //}
@@ -98,7 +98,7 @@ class Game{
       gymLeader.getPokemon().move4();
       damage = gymLeader.getPokemon().move4();
     }
-    String battleMessage = opponentPokemon.getName() + " dealt " + damage + " damage!";
+    battleMessage = gymLeader.getPokemon().getName() + " dealt " + damage + " damage!";
     TextBox(100,100,100,100,battleMessage);
   }
 
