@@ -13,10 +13,15 @@ Started on functions like drawBattle or finish keypressed. Error that says Pokem
 
 ## GROUP MEMBER 2: Edwin Lin
 
-### date x
+### date 5/23/24
 
-info
+Adding name and details as well as testing merge
 
-### date y
+### date 5/27/24
 
-info
+Made Pokemon into an abstract class, wrote get and set methods, made the pokemon subclasses
+
+### date 5/30/24
+
+Designated moves for each Pokemon subclass
+
