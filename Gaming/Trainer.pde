@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 class Trainer{
+  
   String name;
   PVector position;
-  ArrayList<Pokemon> team = new ArrayList<Pokemon>();
+  ArrayList<Pokemon> team = new ArrayList<Pokemon>(4);
   
   public Trainer(String name, PVector position, ArrayList<Pokemon> team){
     this.name = name;
