@@ -25,3 +25,7 @@ Made Pokemon into an abstract class, wrote get and set methods, made the pokemon
 
 Designated moves for each Pokemon subclass
 
+### date 5/31/24
+
+Implemented all damaging moves for each Pokemon subclass
+
