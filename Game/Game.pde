@@ -8,14 +8,9 @@ class Game{
   int gameState = BATTLE;
   boolean battleOver = false;
   
-  public void drawText(String message, int startRow, int startCol){
-    fill(0);
-    text(message, startCol, startRow);
-  }
-  
   public void TextBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
-    drawText(text, col+20, row+20);
+    text(text, col+20, row+20);
   }
   
   public void colorByPercent(float percentage){
@@ -28,8 +23,36 @@ class Game{
   //public void switchOverworld(){
   //}
   
-  //public void drawBattle(Trainer opponent, Trainer player){
-  //}
+  public void drawBattle(Trainer opponent, Trainer player){
+  fill(0);
+  textSize(20);
+  text(player.getPokemon().name, 50, 100);
+  text("HP: " + player.getPokemon().getHP(), 50, 130);
+
+  text(gymLeader.getPokemon().name, 550, 100);
+  text("HP: " + gymLeader.getPokemon().getHP(), 550, 130);
+
+  textSize(18);
+  text("Let's get it rumbling!", 50, 300, 700, 200);
+
+  if (!battleOver) {
+    textSize(16);
+    text("1. Move 1", 50, 400);
+    text("2. Move 2", 50, 430);
+    text("3. Move 3", 50, 460);
+    text("4. Move 4", 50, 490);
+  }
+
+  // Check for Battle Over
+  if (player.getPokemon().getHP() <= 0 || gymLeader.getPokemon().getHP() <= 0) {
+    battleOver = true;
+    if (player.getPokemon().getHP() <= 0) {
+      battleMessage = "You lost the battle!";
+    } else {
+      battleMessage = "You won the battle!";
+    }
+  }
+}
   
   //public void switchBattle(){
   //}
@@ -57,10 +80,6 @@ class Game{
   public void drawScreen(){
     drawBackground();
     TextBox(50, 50, 300, 100, "Welcome to Epic Battle!");
-  }
-  
-  public void setup(){
-    drawScreen();
   }
   
   void opponentTurn() {
@@ -112,6 +131,11 @@ class Game{
       opponentTurn();
       playerTurn = true;
     }
+  }
+  
+  
+  public void setup(){
+    drawScreen();
   }
   
 }
