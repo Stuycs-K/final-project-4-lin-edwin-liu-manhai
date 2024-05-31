@@ -1,15 +1,16 @@
 class Game{
   boolean playerTurn = true;
-  ArrayList<Pokemon> team = new ArrayList<Pokemon>();
-  Trainer player = new Trainer("Sasuke", PVector(0,0), team);
-  Trainer gymLeader;
+  ArrayList<Pokemon> team1 = new ArrayList<Pokemon>(4);
+  ArrayList<Pokemon> team2 = new ArrayList<Pokemon>(4);
+  Trainer player = new Trainer("Sasuke", PVector(300,300), team1);
+  Trainer gymLeader = new Trainer("Itachi", PVector(300,0), team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
   int gameState = BATTLE;
   boolean battleOver = false;
   String battleMessage;
   
-  public void TextBox(int row, int col, int width, int height, String text){
+  public void textBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
     text(text, col+20, row+20);
   }
@@ -30,21 +31,21 @@ class Game{
     text(player.getPokemon().name, 50, 100);
     text("HP: " + player.getPokemon().getHP(), 50, 130);
 
-    text(gymLeader.getPokemon().name, 550, 100);
-    text("HP: " + gymLeader.getPokemon().getHP(), 550, 130);
+    text(opponent.getPokemon().name, 550, 100);
+    text("HP: " + opponent.getPokemon().getHP(), 550, 130);
 
     textSize(18);
     text("Let's get it rumbling!", 50, 300, 700, 200);
 
     if (!battleOver) {
       textSize(16);
-      text("1. Move 1", 50, 400);
-      text("2. Move 2", 50, 430);
-      text("3. Move 3", 50, 460);
-      text("4. Move 4", 50, 490);
+      textBox(50,50,300,300,"1. Move 1");
+      textBox(50,50,300,350,"2. Move 2");
+      textBox(50,50,350,300,"3. Move 3");
+      textBox(50,50,350,350,"4. Move 4");
     }
     
-    if (player.getPokemon().getHP() <= 0 || gymLeader.getPokemon().getHP() <= 0) {
+    if (player.getPokemon().getHP() <= 0 || opponent.getPokemon().getHP() <= 0) {
       battleOver = true;
       if (player.getPokemon().getHP() <= 0) {
         battleMessage = "You lost the battle!";
@@ -79,7 +80,7 @@ class Game{
   
   public void drawScreen(){
     drawBackground();
-    TextBox(50, 50, 300, 100, "Welcome to Epic Battle!");
+    textBox(50, 50, 300, 100, "Welcome to Epic Battle!");
   }
   
   void opponentTurn() {
@@ -99,7 +100,7 @@ class Game{
       damage = gymLeader.getPokemon().move4();
     }
     battleMessage = gymLeader.getPokemon().getName() + " dealt " + damage + " damage!";
-    TextBox(100,100,100,100,battleMessage);
+    textBox(100,100,100,100,battleMessage);
   }
 
   
