@@ -6,9 +6,9 @@
 
 Started on implementing game mechanics like opponent turn and keypressed, which is basically player turn while also fixing up on errors in the code. 
 
-### Date: 5/23/24
+### Date: 5/30/24
 
-Implemented the methods inside Game, Pokemon and Trainer. Need to write the methods next.
+Started on functions like drawBattle or finish keypressed. Error that says Pokemon class and Trainer class keeps popping up. Have to find out why later. 
 
 
 ## GROUP MEMBER 2: Edwin Lin
