@@ -1,10 +1,14 @@
 public class Mewtwo extends Pokemon{
   public String move1(Pokemon opponent){
-    Confusion
+    opponent.applyDamage(4*this.getAttack()/other.getDefense());
+    return this + " attacked "+ other + " and dealt "+ damage +
+    " points of damage with Confusion.";
   }
 
   public String move2(Pokemon opponent){
-    Psystrike
+    opponent.applyDamage(8*this.getAttack()/other.getDefense());
+    return this + " attacked "+ other + " and dealt "+ damage +
+    " points of damage with Psystrike.";
   }
 
   public String move3(){
