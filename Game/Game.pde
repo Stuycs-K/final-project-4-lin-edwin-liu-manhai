@@ -6,9 +6,33 @@ class Game{
   Trainer gymLeader = new Trainer("Itachi", PVector(300,0), team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
-  int gameState = BATTLE;
+  int gameState;
   boolean battleOver = false;
   String battleMessage;
+  final int TILE_SIZE = 32;
+  final int MAP_WIDTH = 20;
+  final int MAP_HEIGHT = 15;
+  int playerX = 5;
+  int playerY = 5;
+  
+  int[][] map = {
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
+  };
+
   
   public void textBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
@@ -19,8 +43,35 @@ class Game{
     fill(255 * percentage, 255 * (1 - percentage), 0);
   }
   
-  //public void drawOverworld(){
-  //}
+  public void drawOverworld(){
+    final int TILE_SIZE = 32;
+    final int MAP_WIDTH = 20;
+    final int MAP_HEIGHT = 15;
+    gameState = OVERWORLD;
+
+    for (int y = 0; y < MAP_HEIGHT; y++) {
+      for (int x = 0; x < MAP_WIDTH; x++) {
+        drawTile(map[y][x], x * TILE_SIZE, y * TILE_SIZE);
+      }
+    }
+  
+    fill(255, 0, 0);
+    rect(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
+
+  public void drawTile(int tileType, int x, int y) {
+    if (tileType == 0) {
+      fill(34, 139, 34); 
+    } 
+    else if (tileType == 1) {
+      fill(0, 0, 255); 
+    } 
+    else if (tileType == 2) {
+      fill(139, 69, 19); 
+    }
+    rect(x, y, TILE_SIZE, TILE_SIZE);
+  }
+
   
   //public void switchOverworld(){
   //}
@@ -61,11 +112,12 @@ class Game{
   //public Trainer createRandomTrainer(){
   //}
   
-  //public Pokemon getRandomEnemyAttack(Trainer opponent, Trainer player){
-  //}
   
-  //public void quit(){
-  //}
+  public void quit(){
+    textSize(30);
+    String message = "You have embraced cowardice!";
+    textBox(messsage,50,50,300,300);
+  }
   
   public void clearArea(int height, int weight, int row, int col){
   }
@@ -75,7 +127,7 @@ class Game{
   }
   
   public void drawBackground(){
-    background(200);    
+    background(255);    
   }
   
   public void drawScreen(){
@@ -105,17 +157,19 @@ class Game{
 
   
   void keyPressed() {
-    if (key == 'W'){
-      player.move(getPosition().add(PVector(0,-10)));
-    }
-    if (key == 'A'){
-      player.move(getPosition().add(PVector(-10,0)));
-    }
-    if (key == 'S'){
-      player.move(getPosition().add(PVector(0,10)));
-    }
-    if (key == 'D'){
-      player.move(getPosition().add(PVector(10,0)));
+    if (gameState == OVERWORLD) {
+      if (keyCode == LEFT) {
+        if (playerX > 0) playerX--;
+      } 
+      else if (keyCode == RIGHT) {
+        if (playerX < MAP_WIDTH - 1) playerX++;
+      } 
+      else if (keyCode == UP) {
+        if (playerY > 0) playerY--;
+      } 
+      else if (keyCode == DOWN) {
+        if (playerY < MAP_HEIGHT - 1) playerY++;
+      }
     }
     if (playerTurn) {
       if (key == '1') {
@@ -136,7 +190,14 @@ class Game{
   
   
   public void setup(){
-    drawScreen();
+    size(640, 480);
+  }
+  
+  void draw() {
+    background(255);
+    if (gameState == OVERWORLD) {
+      drawOverworld();
+    }
   }
   
 }
