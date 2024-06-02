@@ -1,6 +1,11 @@
 public class Charmander extends Pokemon{
+  boolean sun;
+  public Charmander(){
+    super(fire, 39, 60, 50, 65);
+  }
+  
   public String move1(Pokemon opponent){
-    opponent.applyDamage(4*this.getAttack()/other.getDefense());
+    opponent.applyDamage(4*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Scratch.";
   }
@@ -13,16 +18,21 @@ public class Charmander extends Pokemon{
     if (opponent.getType() == water || opponent.getType() == fire) {
       damage = 2;
     }
-    opponent.applyDamage(damage*this.getAttack()/other.getDefense());
+    if (sun){
+      damage*1.5;}
+    opponent.applyDamage(damage*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Ember.";
   }
 
   public String move3(){
-    Growl
+    this.attack *= 1.5;
+    this.speed *= 1.5;
+    return this + "used Dragon Dance. Charmander's attack and speed rose.";
   }
 
   public String move4(){
-    Sunny Day
+    sun = true;
+    return this + "uses Sunny Day. It started to rain.";
   }
 }

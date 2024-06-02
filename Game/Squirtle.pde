@@ -1,6 +1,13 @@
 public class Squirtle extends Pokemon{
+  boolean rain;
+  
+  public Squirtle(){
+    super(water, 44, 50, 64, 43);
+    rain = false;
+  }
+  
   public String move1(Pokemon opponent){
-    opponent.applyDamage(4*this.getAttack()/other.getDefense());
+    opponent.applyDamage(4*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Pound.";
   }
@@ -13,16 +20,20 @@ public class Squirtle extends Pokemon{
     if (opponent.getType() == water || opponent.getType() == grass) {
       damage = 2;
     }
-    opponent.applyDamage(damage*this.getAttack()/other.getDefense());
+    if (rain){
+      damage*1.5;}
+    opponent.applyDamage(damage*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Water Gun.";
   }
 
-  public String move3(Pokemon opponent){
-    Withdraw
+  public String move3(){
+    this.defense *= 2;
+    return this + "used Withdraw. Squirtle's attack rose.";
   }
 
   public String move4(){
-    Rain Dance
+    rain = true;
+    return this + "uses Rain Dance. It started to rain."
   }
 }
