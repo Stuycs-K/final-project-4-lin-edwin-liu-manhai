@@ -7,13 +7,22 @@ public abstract class Pokemon{
   int defense;
   int speed;
   
+  public Pokemon(String t, int h, int a, int d, int s){
+    type = t;
+    hp = h;
+    maxHP = h;
+    attack = a;
+    defense = d;
+    speed = s;
+  }
+  
   public abstract String move1(Pokemon opponent){
   };
   
   public abstract String move2(Pokemon opponent){
   };
   
-  public abstract String move3(Pokemon opponent){
+  public abstract String move3(){
   };
   
   public abstract String move4(){
@@ -45,6 +54,8 @@ public abstract class Pokemon{
   
   public void setHP(int health){
 HP = health;
+if (HP > maxHP){
+  HP = maxHP;
   }
   
   public void setMaxHP(int health){
