@@ -29,3 +29,7 @@ Designated moves for each Pokemon subclass
 
 Implemented all damaging moves for each Pokemon subclass
 
+### date 6/1/24
+
+Finished all pokemon classes, made adjustments to pokemon and added weather
+
