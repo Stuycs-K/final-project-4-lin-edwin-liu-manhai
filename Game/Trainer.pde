@@ -1,4 +1,4 @@
-public class Trainer{
+class Trainer{
   
   String name;
   PVector position;

@@ -1,4 +1,4 @@
-public class Pokemon{
+abstract class Pokemon{
   String type;
   int HP;
   int maxHP;
@@ -21,6 +21,10 @@ public class Pokemon{
   
   public int getHp(){
     return HP;
+  }
+  
+  public String getType(){
+    return type;
   }
   
   public int getMaxHP(){

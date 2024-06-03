@@ -1,16 +1,16 @@
-class Mewtwo extends Pokemon{
-  public Mewtwo(){
+class pokemonMewtwo extends Pokemon{
+  public pokemonMewtwo(){
     super("psychic", 106, 154, 90, 130);
   }
   public String move1(Pokemon opponent){
-    opponent.applyDamage(4*this.getAttack()/other.getDefense() + 1);
-    return this + " attacked "+ other + " and dealt "+ damage +
+    opponent.applyDamage(4*this.getAttack()/opponent.getDefense() + 1);
+    return this + " attacked "+ opponent + " and dealt "+ (4*this.getAttack()/opponent.getDefense() + 1) +
     " points of damage with Confusion.";
   }
 
   public String move2(Pokemon opponent){
-    opponent.applyDamage(8*this.getAttack()/other.getDefense() + 1);
-    return this + " attacked "+ other + " and dealt "+ damage +
+    opponent.applyDamage(8*this.getAttack()/opponent.getDefense() + 1);
+    return this + " attacked "+ opponent + " and dealt "+ (8*this.getAttack()/opponent.getDefense() + 1) +
     " points of damage with Psystrike.";
   }
 
