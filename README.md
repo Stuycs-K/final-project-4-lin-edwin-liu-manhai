@@ -48,3 +48,6 @@ Overworld Map (Manhai)
     Trainer Interaction (Edwin)
     Implement NPC and Gym Leader interactions
     Trigger battles upon player approach
+<<<<<<< HEAD
+<<<<<<< HEAD
+
