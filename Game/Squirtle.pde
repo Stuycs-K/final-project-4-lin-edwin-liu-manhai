@@ -2,7 +2,7 @@ public class Squirtle extends Pokemon{
   boolean rain;
   
   public Squirtle(){
-    super(water, 44, 50, 64, 43);
+    super("water", 44, 50, 64, 43);
     rain = false;
   }
   
@@ -16,12 +16,11 @@ public class Squirtle extends Pokemon{
     int damage = 4;
     if (opponent.getType() == fire) {
       damage = 8;
-    } else 
-    if (opponent.getType() == water || opponent.getType() == grass) {
+    } else if (opponent.getType() == water || opponent.getType() == grass) {
       damage = 2;
     }
     if (rain){
-      damage*1.5;}
+      damage = damage*1.5;}
     opponent.applyDamage(damage*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Water Gun.";
@@ -34,6 +33,6 @@ public class Squirtle extends Pokemon{
 
   public String move4(){
     rain = true;
-    return this + "uses Rain Dance. It started to rain."
+    return this + "uses Rain Dance. It started to rain.";
   }
 }

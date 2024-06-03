@@ -1,4 +1,5 @@
-class Trainer{
+public class Trainer{
+  
   String name;
   PVector position;
   ArrayList<Pokemon> team = new ArrayList<Pokemon>();

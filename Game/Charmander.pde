@@ -1,7 +1,7 @@
 public class Charmander extends Pokemon{
   boolean sun;
   public Charmander(){
-    super(fire, 39, 60, 50, 65);
+    super("fire", 39, 60, 50, 65);
   }
   
   public String move1(Pokemon opponent){
@@ -19,7 +19,7 @@ public class Charmander extends Pokemon{
       damage = 2;
     }
     if (sun){
-      damage*1.5;}
+      damage = damage*1.5;}
     opponent.applyDamage(damage*this.getAttack()/other.getDefense() + 1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage with Ember.";
@@ -33,6 +33,6 @@ public class Charmander extends Pokemon{
 
   public String move4(){
     sun = true;
-    return this + "uses Sunny Day. It started to rain.";
+    return this + "uses Sunny Day. It started to shine.";
   }
 }
