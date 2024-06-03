@@ -33,4 +33,8 @@ class pokemonBulbasaur extends Pokemon{
     return this + "used Synthesis. Bulbasaur's was healed.";
   }
   
+  public String name(){
+    return "Bulbasaur";
+  }
+  
 }

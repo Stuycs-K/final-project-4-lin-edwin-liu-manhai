@@ -66,4 +66,10 @@ abstract class Pokemon{
     speed = spd;
   }
   
+  abstract String move1(Pokemon opponent);
+  abstract String move2(Pokemon opponent);
+  abstract String move3();
+  abstract String move4();
+  abstract String name();
+  
 }

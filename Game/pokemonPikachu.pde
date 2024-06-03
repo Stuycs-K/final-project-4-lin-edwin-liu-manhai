@@ -30,4 +30,8 @@ class pokemonPikachu extends Pokemon{
     this.attack *= 2;
     return this + "used Nasty Plot. Pikachu's attack rose.";
   }
+  
+   public String name(){
+    return "Pikachu";
+  }
 }

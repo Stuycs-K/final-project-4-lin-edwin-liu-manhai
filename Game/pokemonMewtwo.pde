@@ -23,4 +23,7 @@ class pokemonMewtwo extends Pokemon{
     this.attack += 50;
     return this + "used Nasty Plot. Mewtwo's attack rose.";
   }
+   public String name(){
+    return "Mewtwo";
+  }
 }
