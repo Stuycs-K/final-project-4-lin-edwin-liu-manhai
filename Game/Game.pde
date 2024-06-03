@@ -2,8 +2,8 @@ class Game{
   boolean playerTurn = true;
   ArrayList<Pokemon> team1 = new ArrayList<Pokemon>(4);
   ArrayList<Pokemon> team2 = new ArrayList<Pokemon>(4);
-  Trainer player = new Trainer("Sasuke", PVector(300,300), team1);
-  Trainer gymLeader = new Trainer("Itachi", PVector(300,0), team2);
+  Trainer player = new Trainer("Sasuke", team1);
+  Trainer gymLeader = new Trainer("Itachi", team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
   int gameState;
@@ -50,6 +50,8 @@ class Game{
     final int MAP_WIDTH = 20;
     final int MAP_HEIGHT = 15;
     gameState = OVERWORLD;
+    
+    drawScreen();
 
     for (int y = 0; y < MAP_HEIGHT; y++) {
       for (int x = 0; x < MAP_WIDTH; x++) {
@@ -74,24 +76,13 @@ class Game{
     }
     rect(x, y, TILE_SIZE, TILE_SIZE);
   }
-
-  
-  public void switchOverworld(){
-    
-  }
   
   boolean checkTrainerProximity() {
   int dx = abs(playerX - trainerX);
   int dy = abs(playerY - trainerY);
   return (dx + dy == 1);
 }
-  
- void drawBattleScreen() {
-  background(0);
-  fill(255);
-  textSize(32);
-  text("Battle Start!", width / 2 - 100, height / 2);
-  }
+
   
   public void drawBattle(Trainer opponent, Trainer player){
     fill(0);
@@ -123,12 +114,6 @@ class Game{
     }
   }
   
-  //public void switchBattle(){
-  //}
-  
-  //public Trainer createRandomTrainer(){
-  //}
-  
   
   public void quit(){
     textSize(30);
@@ -136,12 +121,7 @@ class Game{
     textBox(50,50,300,300,message);
   }
   
-  public void drawBackground(){
-    background(255);    
-  }
-  
   public void drawScreen(){
-    drawBackground();
     textBox(50, 50, 300, 100, "Welcome to Epic Battle!");
   }
   
@@ -212,7 +192,7 @@ class Game{
       gameState = BATTLE;
     }
   } else if (gameState == BATTLE) {
-    drawBattleScreen();
+    drawBattle(gymLeader,player);
   } 
 }
   

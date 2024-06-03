@@ -1,12 +1,10 @@
 class Trainer{
   
   String name;
-  PVector position;
   ArrayList<Pokemon> team = new ArrayList<Pokemon>();
   
-  public Trainer(String name, PVector position, ArrayList<Pokemon> team){
+  public Trainer(String name, ArrayList<Pokemon> team){
     this.name = name;
-    this. position = position;
     this.team = team;
   }
   
@@ -14,13 +12,6 @@ class Trainer{
     return name;
   }
   
-  public PVector getPosition(){
-    return position;
-  }
-  
-  public void move(PVector position2){
-    position = position2;
-  }
   
   public ArrayList getTeam(int partynumber){
     return team;
