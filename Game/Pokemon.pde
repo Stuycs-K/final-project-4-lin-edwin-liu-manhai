@@ -1,4 +1,4 @@
-public class Pokemon{
+class Pokemon{
   String type;
   int HP;
   int maxHP;
@@ -15,50 +15,50 @@ public class Pokemon{
     speed = s;
   }
   
-  public void applyDamage(int amount){
+  void applyDamage(int amount){
     this.HP -= amount;
   }
   
-  public int getHp(){
+  int getHp(){
     return HP;
   }
   
-  public int getMaxHP(){
+  int getMaxHP(){
     return maxHP;
   }
   
-  public int getAttack(){
+  int getAttack(){
     return attack;
   }
   
-  public int getDefense(){
+  int getDefense(){
     return defense;
   }
   
-  public int getSpeed(){
+  int getSpeed(){
     return speed;
   }
   
-  public void setHP(int health){
+  void setHP(int health){
     HP = health;
     if (HP > maxHP){
       HP = maxHP;
     }
   }
   
-  public void setMaxHP(int health){
+  void setMaxHP(int health){
     maxHP = health;
   }
   
-  public void setAttack(int atk){
+  void setAttack(int atk){
     attack = atk;
   }
   
-  public void setDefense(int def){
+  void setDefense(int def){
     defense = def;
   }
   
-  public void setSpeed(int spd){
+  void setSpeed(int spd){
     speed = spd;
   }
   
