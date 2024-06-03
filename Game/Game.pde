@@ -14,6 +14,7 @@
   int gameState = OVERWORLD;
   boolean battleOver = false;
   String battleMessage;
+  int moveNum = 0;
   final int TILE_SIZE = 32;
   final int MAP_WIDTH = 20;
   final int MAP_HEIGHT = 15;
@@ -23,22 +24,22 @@
   int trainerY = 2;
   
   int[][] map = {
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
-  };
+  {2, 1, 0, 2, 0, 1, 1, 0, 2, 1, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2},
+  {1, 2, 0, 0, 1, 2, 1, 0, 0, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 1},
+  {0, 1, 2, 1, 0, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2},
+  {2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 1},
+  {1, 2, 0, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0, 1, 2, 0, 1, 2, 0, 1},
+  {0, 2, 1, 0, 1, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 1, 2, 0},
+  {2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0, 1, 2, 0},
+  {1, 0, 2, 1, 0, 2, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2},
+  {0, 2, 1, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 1, 2, 0, 1},
+  {1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 0, 1},
+  {0, 2, 1, 0, 2, 1, 0, 1, 2, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2},
+  {2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1},
+  {1, 0, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1},
+  {0, 2, 1, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 2, 0, 1, 2, 0, 1},
+  {2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 0, 1, 2, 0}
+};
   
   public void textBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
@@ -65,6 +66,7 @@
   
     fill(255, 0, 0);
     rect(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    fill(255,255,255);
     rect(trainerX * TILE_SIZE, trainerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
 
@@ -114,8 +116,10 @@
       battleOver = true;
       if (player.getPokemon().getHP() <= 0) {
         battleMessage = "You lost the battle!";
+        text(battleMessage,350,0);
       } else {
         battleMessage = "You won the battle!";
+        text(battleMessage,350,0);
       }
     }
   }
@@ -167,12 +171,16 @@
     if (playerTurn) {
       if (key == '1') {
         player.getPokemon().move1(gymLeader.getPokemon());
+        moveNum = 1;
       } else if (key == '2') {
         player.getPokemon().move2(gymLeader.getPokemon());
+        moveNum = 2;
       } else if (key == '3') {
         player.getPokemon().move3();
+        moveNum = 3;
       } else if (key == '4') {
         player.getPokemon().move4();
+        moveNum = 4;
       }
       else if (key == 'q'){
         quit();
@@ -188,6 +196,8 @@
     player.addTeam(Charmander);
     player.addTeam(Bulbasaur);
     player.addTeam(Squirtle);
+    player.addTeam(Eevee);
+    player.addTeam(Pikachu);
     gymLeader.addTeam(Mewtwo);
   }
   
