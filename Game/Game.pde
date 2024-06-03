@@ -1,4 +1,5 @@
 class zGame{
+
   boolean playerTurn = true;
   ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
   ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
@@ -176,6 +177,7 @@ class zGame{
       playerTurn = true;
     }
   }
+
   void setup(){
     size(640, 480);
   }
@@ -192,5 +194,9 @@ class zGame{
     drawBattle(gymLeader,player);
   } 
 }
-  
+
 }
+
+
+  
+  
