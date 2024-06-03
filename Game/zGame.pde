@@ -1,4 +1,4 @@
-class Game{
+class zGame{
   boolean playerTurn = true;
   ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
   ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
