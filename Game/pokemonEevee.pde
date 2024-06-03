@@ -11,7 +11,7 @@ class pokemonEevee extends Pokemon{
   public String move2(Pokemon opponent){
     opponent.applyDamage(8*this.getAttack()/opponent.getDefense() + 1);
     this.applyDamage(2*this.getAttack()/opponent.getDefense());
-    return this + " attacked "+ opponent + " and dealt "+ damage +
+    return this + " attacked "+ opponent + " and dealt "+ (8*this.getAttack()/opponent.getDefense() + 1) +
     " points of damage with Double-Edge. Eevee took recoil damage.";
   }
 
