@@ -19,7 +19,7 @@ abstract class Pokemon{
     this.HP -= amount;
   }
   
-  int getHp(){
+  public int getHP(){
     return HP;
   }
   

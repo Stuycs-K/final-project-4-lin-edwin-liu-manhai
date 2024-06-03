@@ -1,12 +1,16 @@
+import java.util.ArrayList;
 class Game{
   boolean playerTurn = true;
-  ArrayList<Pokemon> team1 = new ArrayList<Pokemon>(4);
-  ArrayList<Pokemon> team2 = new ArrayList<Pokemon>(4);
+  ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
+  ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
   Trainer player = new Trainer("Sasuke", team1);
   Trainer gymLeader = new Trainer("Itachi", team2);
+  player.addTeam(pokemonEevee);
+  player.addTeam(pokemonPikachu);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
   int gameState;
+  gameState = OVERWORLD;
   boolean battleOver = false;
   String battleMessage;
   final int TILE_SIZE = 32;
@@ -87,10 +91,10 @@ class Game{
   public void drawBattle(Trainer opponent, Trainer player){
     fill(0);
     textSize(20);
-    text(player.getPokemon().name, 50, 100);
+    textBox(50,50,50,100,player.getPokemon().toString());
     text("HP: " + player.getPokemon().getHP(), 50, 130);
 
-    text(opponent.getPokemon().name, 550, 100);
+    textBox(50,50,50,100,opponent.getPokemon().toString());
     text("HP: " + opponent.getPokemon().getHP(), 550, 130);
 
     textSize(18);
