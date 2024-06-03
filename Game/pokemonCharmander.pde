@@ -2,7 +2,7 @@ class pokemonCharmander extends Pokemon{
   boolean sun;
   
   public pokemonCharmander() {
-    super("fire", 39, 60, 50, 65);
+    super("fire", 39, 60, 50, 65,"Charmander");
   }
 
   public String move1(Pokemon opponent) {

@@ -1,7 +1,7 @@
 class pokemonBulbasaur extends Pokemon{
   
   public pokemonBulbasaur(){
-    super("grass", 45, 65, 65, 45);
+    super("grass", 45, 65, 65, 45,"Bulbasaur");
   }
   
   public String move1(Pokemon opponent){

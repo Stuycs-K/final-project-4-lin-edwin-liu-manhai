@@ -1,8 +1,12 @@
-class zGame{
-
   boolean playerTurn = true;
   ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
   ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
+  pokemonCharmander Charmander = new pokemonCharmander();
+  pokemonSquirtle Squirtle = new pokemonSquirtle();
+  pokemonBulbasaur Bulbasaur = new pokemonBulbasaur();
+  pokemonEevee Eevee = new pokemonEevee();
+  pokemonPikachu Pikachu = new pokemonPikachu();
+  pokemonMewtwo Mewtwo = new pokemonMewtwo();
   Trainer player = new Trainer("Sasuke", team1);
   Trainer gymLeader = new Trainer("Itachi", team2);
   final int OVERWORLD = 0;
@@ -85,26 +89,28 @@ class zGame{
 
   
   public void drawBattle(Trainer opponent, Trainer player){
-    fill(0);
     textSize(20);
-    textBox(50,50,50,100,player.getPokemon().toString());
-    text("HP: " + player.getPokemon().getHP(), 50, 130);
+    text(player.getPokemon().getName(), 150 , 150);
+    text("HP: " + player.getPokemon().getHP(), 150, 200);
 
-    textBox(50,50,50,100,opponent.getPokemon().toString());
-    text("HP: " + opponent.getPokemon().getHP(), 550, 130);
-
-    textSize(18);
-    text("Let's get it rumbling!", 50, 300, 700, 200);
-
-    if (!battleOver) {
-      textSize(16);
-      textBox(50,50,300,300,"1. Move 1");
-      textBox(50,50,300,350,"2. Move 2");
-      textBox(50,50,350,300,"3. Move 3");
-      textBox(50,50,350,350,"4. Move 4");
+    text(opponent.getPokemon().getName(), 300 , 150);
+    text("HP: " + opponent.getPokemon().getHP(), 300, 200);
+    
+    textSize(16);
+    text("1.Move 1", 50 , 300);
+    text("2.Move 2", 50 , 350);
+    text("3.Move 3", 50 , 400);
+    text("4.Move 4", 50 , 450);
+    
+    if (player.getPokemon().getHP() <= 0){
+      player.removeTeam();
     }
     
-    if (player.getPokemon().getHP() <= 0 || opponent.getPokemon().getHP() <= 0) {
+    if (opponent.getPokemon().getHP() <= 0){
+      opponent.removeTeam();
+    }
+    
+    if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
       battleOver = true;
       if (player.getPokemon().getHP() <= 0) {
         battleMessage = "You lost the battle!";
@@ -177,9 +183,12 @@ class zGame{
       playerTurn = true;
     }
   }
-
   void setup(){
     size(640, 480);
+    player.addTeam(Charmander);
+    player.addTeam(Bulbasaur);
+    player.addTeam(Squirtle);
+    gymLeader.addTeam(Mewtwo);
   }
   
   void draw() {
@@ -193,10 +202,5 @@ class zGame{
   } else if (gameState == BATTLE) {
     drawBattle(gymLeader,player);
   } 
-}
-
-}
-
-
   
-  
+}

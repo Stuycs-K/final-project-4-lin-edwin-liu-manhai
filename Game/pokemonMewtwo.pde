@@ -1,6 +1,6 @@
 class pokemonMewtwo extends Pokemon{
   public pokemonMewtwo(){
-    super("psychic", 106, 154, 90, 130);
+    super("psychic", 106, 154, 90, 130,"Mewtwo");
   }
   public String move1(Pokemon opponent){
     opponent.applyDamage(4*this.getAttack()/opponent.getDefense() + 1);
