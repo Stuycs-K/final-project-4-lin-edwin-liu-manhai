@@ -1,4 +1,4 @@
-public class Pikachu extends Pokemon{
+class Pikachu extends Pokemon{
   public Pikachu(){
     super("electric", 45, 75, 60, 120);
   }

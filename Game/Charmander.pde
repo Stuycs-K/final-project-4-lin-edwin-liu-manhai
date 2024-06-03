@@ -1,4 +1,4 @@
-public class Charmander extends Pokemon{
+class Charmander extends Pokemon{
   boolean sun;
   public Charmander(){
     super("fire", 39, 60, 50, 65);

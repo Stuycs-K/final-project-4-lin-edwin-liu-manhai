@@ -1,4 +1,4 @@
-public class Mewtwo extends Pokemon{
+class Mewtwo extends Pokemon{
   public Mewtwo(){
     super("psychic", 106, 154, 90, 130);
   }

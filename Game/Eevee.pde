@@ -1,4 +1,4 @@
-public class Eevee extends Pokemon{
+class Eevee extends Pokemon{
   public Eevee(){
     super("normal", 65, 65, 85, 75);
   }

@@ -1,4 +1,4 @@
-public class Squirtle extends Pokemon{
+class Squirtle extends Pokemon{
   boolean rain;
   
   public Squirtle(){

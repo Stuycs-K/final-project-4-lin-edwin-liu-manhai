@@ -12,8 +12,10 @@ class Game{
   final int TILE_SIZE = 32;
   final int MAP_WIDTH = 20;
   final int MAP_HEIGHT = 15;
-  int playerX = 5;
-  int playerY = 5;
+  int playerX = 9;
+  int playerY = 12;
+  int trainerX = 9;
+  int trainerY = 2;
   
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
@@ -57,6 +59,7 @@ class Game{
   
     fill(255, 0, 0);
     rect(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    rect(trainerX * TILE_SIZE, trainerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
 
   public void drawTile(int tileType, int x, int y) {
@@ -73,8 +76,22 @@ class Game{
   }
 
   
-  //public void switchOverworld(){
-  //}
+  public void switchOverworld(){
+    
+  }
+  
+  boolean checkTrainerProximity() {
+  int dx = abs(playerX - trainerX);
+  int dy = abs(playerY - trainerY);
+  return (dx + dy == 1);
+}
+  
+ void drawBattleScreen() {
+  background(0);
+  fill(255);
+  textSize(32);
+  text("Battle Start!", width / 2 - 100, height / 2);
+  }
   
   public void drawBattle(Trainer opponent, Trainer player){
     fill(0);
@@ -116,14 +133,7 @@ class Game{
   public void quit(){
     textSize(30);
     String message = "You have embraced cowardice!";
-    textBox(messsage,50,50,300,300);
-  }
-  
-  public void clearArea(int height, int weight, int row, int col){
-  }
-  
-  public void run(int opponentTeam, int playerTeam){
-    
+    textBox(50,50,300,300,message);
   }
   
   public void drawBackground(){
@@ -194,10 +204,16 @@ class Game{
   }
   
   void draw() {
-    background(255);
-    if (gameState == OVERWORLD) {
-      drawOverworld();
+  background(255);
+  
+  if (gameState == OVERWORLD) {
+    drawOverworld();
+    if (checkTrainerProximity()) {
+      gameState = BATTLE;
     }
-  }
+  } else if (gameState == BATTLE) {
+    drawBattleScreen();
+  } 
+}
   
 }

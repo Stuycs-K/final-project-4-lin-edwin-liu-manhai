@@ -1,4 +1,4 @@
-public class Bulbasaur extends Pokemon{
+class Bulbasaur extends Pokemon{
   
   public Bulbasaur(){
     super("grass", 45, 65, 65, 45);
