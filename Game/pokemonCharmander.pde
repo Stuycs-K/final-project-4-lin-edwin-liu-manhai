@@ -37,4 +37,7 @@ class pokemonCharmander extends Pokemon{
     sun = true;
     return this + "uses Sunny Day. It started to shine.";
   }
+   public String name(){
+    return "Charmander";
+  }
 }

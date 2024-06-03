@@ -35,4 +35,7 @@ class pokemonSquirtle extends Pokemon{
     rain = true;
     return this + "uses Rain Dance. It started to rain.";
   }
+   public String name(){
+    return "Squirtle";
+  }
 }

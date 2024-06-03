@@ -25,4 +25,7 @@ class pokemonEevee extends Pokemon{
     HP += (maxHP/2);
     return this + "used Recover. Eevee's was healed.";
   }
+   public String name(){
+    return "Eevee";
+  }
 }

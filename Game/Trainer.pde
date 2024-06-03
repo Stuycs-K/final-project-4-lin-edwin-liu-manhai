@@ -8,21 +8,21 @@ class Trainer{
     this.team = team;
   }
   
-  public String getName(){
+  String getName(){
     return name;
   }
   
   
-  public ArrayList getTeam(int partynumber){
+  ArrayList getTeam(int partynumber){
     return team;
   }
   
-  public Pokemon getPokemon(){
+  Pokemon getPokemon(){
     return team.get(0);
   }
   
   
-  public void addTeam(Pokemon newPokemon){
+  void addTeam(Pokemon newPokemon){
     team.add(newPokemon);
   }
   

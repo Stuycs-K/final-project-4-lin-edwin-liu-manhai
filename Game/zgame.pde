@@ -1,12 +1,13 @@
+import java.util.ArrayList;
 class Game{
   boolean playerTurn = true;
-  ArrayList<Pokemon> team1 = new ArrayList<Pokemon>(4);
-  ArrayList<Pokemon> team2 = new ArrayList<Pokemon>(4);
+  ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
+  ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
   Trainer player = new Trainer("Sasuke", team1);
   Trainer gymLeader = new Trainer("Itachi", team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
-  int gameState;
+  int gameState = OVERWORLD;
   boolean battleOver = false;
   String battleMessage;
   final int TILE_SIZE = 32;
@@ -34,7 +35,6 @@ class Game{
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
   };
-
   
   public void textBox(int row, int col, int width, int height, String text){
     rect(col,row,width,height);
@@ -81,16 +81,16 @@ class Game{
   int dx = abs(playerX - trainerX);
   int dy = abs(playerY - trainerY);
   return (dx + dy == 1);
-}
+  }
 
   
   public void drawBattle(Trainer opponent, Trainer player){
     fill(0);
     textSize(20);
-    text(player.getPokemon().name, 50, 100);
+    textBox(50,50,50,100,player.getPokemon().toString());
     text("HP: " + player.getPokemon().getHP(), 50, 130);
 
-    text(opponent.getPokemon().name, 550, 100);
+    textBox(50,50,50,100,opponent.getPokemon().toString());
     text("HP: " + opponent.getPokemon().getHP(), 550, 130);
 
     textSize(18);
@@ -127,22 +127,18 @@ class Game{
   
   void opponentTurn() {
     int move = int(random(1, 5));
-    int damage = 0;
+    String damage = "";
+    Pokemon pokemon = gymLeader.getPokemon();
     if (move == 1) {
-      gymLeader.getPokemon().move1();
-      damage = gymLeader.getPokemon().move1();
+      damage = pokemon.move1(player.getPokemon());
     } else if (move == 2) {
-      gymLeader.getPokemon().move2();
-      damage = gymLeader.getPokemon().move2();
+      damage = pokemon.move2(player.getPokemon());
     } else if (move == 3) {
-      gymLeader.getPokemon().move3();
-      damage = gymLeader.getPokemon().move3();
+      damage = pokemon.move3();
     } else if (move == 4) {
-      gymLeader.getPokemon().move4();
-      damage = gymLeader.getPokemon().move4();
+      damage = pokemon.move4();
     }
-    battleMessage = gymLeader.getPokemon().getName() + " dealt " + damage + " damage!";
-    textBox(100,100,100,100,battleMessage);
+    textBox(100,100,100,100,damage);
   }
 
   
@@ -163,9 +159,9 @@ class Game{
     }
     if (playerTurn) {
       if (key == '1') {
-        player.getPokemon().move1();
+        player.getPokemon().move1(gymLeader.getPokemon());
       } else if (key == '2') {
-        player.getPokemon().move2();
+        player.getPokemon().move2(gymLeader.getPokemon());
       } else if (key == '3') {
         player.getPokemon().move3();
       } else if (key == '4') {
@@ -177,9 +173,7 @@ class Game{
       playerTurn = true;
     }
   }
-  
-  
-  public void setup(){
+  void setup(){
     size(640, 480);
   }
   
