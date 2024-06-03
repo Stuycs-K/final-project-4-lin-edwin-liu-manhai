@@ -1,6 +1,6 @@
 public class Pikachu extends Pokemon{
   public Pikachu(){
-    super(electric, 45, 75, 60, 120);
+    super("electric", 45, 75, 60, 120);
   }
   public String move1(Pokemon opponent){
     opponent.applyDamage(4*this.getAttack()/other.getDefense() + 1);

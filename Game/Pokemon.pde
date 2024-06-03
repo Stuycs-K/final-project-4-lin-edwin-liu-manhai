@@ -1,5 +1,5 @@
 import java.util.Random;
-public abstract class Pokemon{
+public class Pokemon{
   String type;
   int HP;
   int maxHP;
@@ -9,24 +9,12 @@ public abstract class Pokemon{
   
   public Pokemon(String t, int h, int a, int d, int s){
     type = t;
-    hp = h;
+    HP = h;
     maxHP = h;
     attack = a;
     defense = d;
     speed = s;
   }
-  
-  public abstract String move1(Pokemon opponent){
-  };
-  
-  public abstract String move2(Pokemon opponent){
-  };
-  
-  public abstract String move3(){
-  };
-  
-  public abstract String move4(){
-  };
   
   public void applyDamage(int amount){
     this.HP -= amount;
@@ -53,9 +41,10 @@ public abstract class Pokemon{
   }
   
   public void setHP(int health){
-HP = health;
-if (HP > maxHP){
-  HP = maxHP;
+    HP = health;
+    if (HP > maxHP){
+      HP = maxHP;
+    }
   }
   
   public void setMaxHP(int health){
@@ -73,6 +62,5 @@ if (HP > maxHP){
   public void setSpeed(int spd){
     speed = spd;
   }
-  
   
 }
