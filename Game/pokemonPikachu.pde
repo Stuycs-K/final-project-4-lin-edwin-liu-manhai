@@ -21,7 +21,7 @@ class pokemonPikachu extends Pokemon{
     " points of damage with Thunderbolt.";
   }
 
-  public String move3(Pokemon opponent){
+  public String move3(){
     this.speed *= 2;
     return this + "used Agility. Pikachu's speed rose.";
   }

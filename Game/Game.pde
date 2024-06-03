@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-class Game{
+
   boolean playerTurn = true;
   ArrayList<Pokemon> team1 = new ArrayList<Pokemon>();
   ArrayList<Pokemon> team2 = new ArrayList<Pokemon>();
@@ -116,6 +115,7 @@ class Game{
   
   
   public void quit(){
+    fill(0);
     textSize(30);
     String message = "You have embraced cowardice!";
     textBox(50,50,300,300,message);
@@ -167,6 +167,9 @@ class Game{
       } else if (key == '4') {
         player.getPokemon().move4();
       }
+      else if (key == 'q'){
+        quit();
+      }
       playerTurn = false;
       delay(1000);
       opponentTurn();
@@ -190,4 +193,3 @@ class Game{
   } 
 }
   
-}
