@@ -2,21 +2,34 @@
 
 ## GROUP MEMBER 1: Manhai Liu
 
-### Date: 5/22/24
+### Date: 5/29/24
 
-We started on branching and figuring out this all works. 
+Started on implementing game mechanics like opponent turn and keypressed, which is basically player turn while also fixing up on errors in the code. 
 
-### date y
+### Date: 5/30/24
 
-info
+Started on functions like drawBattle or finish keypressed. Error that says Pokemon class and Trainer class keeps popping up. Have to find out why later. 
 
 
-## GROUP MEMBER 2
+## GROUP MEMBER 2: Edwin Lin
 
-### date x
+### date 5/23/24
 
-info
+Adding name and details as well as testing merge
 
-### date y
+### date 5/27/24
 
-info
+Made Pokemon into an abstract class, wrote get and set methods, made the pokemon subclasses
+
+### date 5/30/24
+
+Designated moves for each Pokemon subclass
+
+### date 5/31/24
+
+Implemented all damaging moves for each Pokemon subclass
+
+### date 6/1/24
+
+Finished all pokemon classes, made adjustments to pokemon and added weather
+
