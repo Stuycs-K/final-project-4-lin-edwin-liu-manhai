@@ -33,3 +33,6 @@ Implemented all damaging moves for each Pokemon subclass
 
 Finished all pokemon classes, made adjustments to pokemon and added weather
 
+### date 6/2/24
+
+Debugging methods
