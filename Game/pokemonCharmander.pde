@@ -40,4 +40,16 @@ class pokemonCharmander extends Pokemon{
    public String name(){
     return "Charmander";
   }
+  public String getMove1(){
+    return "Scratch";
+  }
+  public String getMove2(){
+    return "Ember";
+  };
+  public String getMove3(){
+    return "Dragon Dance";
+  };
+  public String getMove4(){
+    return "Sunny Day";
+  };
 }

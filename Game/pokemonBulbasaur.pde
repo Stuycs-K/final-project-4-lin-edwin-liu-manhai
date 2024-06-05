@@ -37,4 +37,17 @@ class pokemonBulbasaur extends Pokemon{
     return "Bulbasaur";
   }
   
+  public String getMove1(){
+    return "Tackle";
+  }
+  public String getMove2(){
+    return "Vine Whip";
+  };
+  public String getMove3(){
+    return "Growth";
+  };
+  public String getMove4(){
+    return "Synthesis";
+  };
+  
 }

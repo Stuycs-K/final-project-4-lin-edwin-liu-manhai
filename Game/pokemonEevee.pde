@@ -28,4 +28,17 @@ class pokemonEevee extends Pokemon{
    public String name(){
     return "Eevee";
   }
+  
+  public String getMove1(){
+    return "Tackle";
+  }
+  public String getMove2(){
+    return "Double-Edge";
+  };
+  public String getMove3(){
+    return "Calm Mind";
+  };
+  public String getMove4(){
+    return "Recover";
+  };
 }

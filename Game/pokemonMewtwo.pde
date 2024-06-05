@@ -26,4 +26,16 @@ class pokemonMewtwo extends Pokemon{
    public String name(){
     return "Mewtwo";
   }
+  public String getMove1(){
+    return "Confusion";
+  }
+  public String getMove2(){
+    return "Psystrike";
+  };
+  public String getMove3(){
+    return "Amnesia";
+  };
+  public String getMove4(){
+    return "Nasty Plot";
+  };
 }
