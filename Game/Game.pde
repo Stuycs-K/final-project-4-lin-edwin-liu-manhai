@@ -90,7 +90,16 @@
  
   public void drawBattle(Trainer opponent, Trainer player){
     textSize(20);
-    text(player.getPokemon().getName(), 150 , 150);
+   
+    if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
+      battleOver = true;
+      if (player.getTeamNumber() == 0) {
+        battleMessage = "You lost the battle!";
+      } else {
+        battleMessage = "You won the battle!";
+      }
+    } else {
+      text(player.getPokemon().getName(), 150 , 150);
     text("HP: " + player.getPokemon().getHP(), 150, 200);
 
     text(opponent.getPokemon().getName(), 300 , 150);
@@ -101,23 +110,13 @@
     text("2.Move 2", 50 , 350);
     text("3.Move 3", 50 , 400);
     text("4.Move 4", 50 , 450);
-   
+      if (opponent.getPokemon().getHP() <= 0){
+      opponent.removeTeam();
+    }
     if (player.getPokemon().getHP() <= 0){
       player.removeTeam();
     }
-   
-    if (opponent.getPokemon().getHP() <= 0){
-      opponent.removeTeam();
-    }
-   
-    if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
-      battleOver = true;
-      if (player.getPokemon().getHP() <= 0) {
-        battleMessage = "You lost the battle!";
-      } else {
-        battleMessage = "You won the battle!";
-      }
-    }
+  }
   }
  
  
@@ -160,7 +159,7 @@
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
     }
-    if (playerTurn) {
+    if (playerTurn && player.getTeamNumber() != 0 && gymLeader.getTeamNumber() != 0) {
       if (key == '1') {
         player.getPokemon().move1(gymLeader.getPokemon());
       } else if (key == '2') {
