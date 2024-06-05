@@ -21,6 +21,12 @@
   int playerY = 12;
   int trainerX = 9;
   int trainerY = 2;
+  final int playerturn = 0;
+  final int playerresult = 1;
+  final int opponentturn = 2;
+  final int opponentresult = 3;
+  int battleState = playerturn;
+  String moveResultMessage = "";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
@@ -46,9 +52,6 @@
     final int MAP_WIDTH = 20;
     final int MAP_HEIGHT = 15;
     gameState = OVERWORLD;
-   
-    //drawScreen();
-
     for (int y = 0; y < MAP_HEIGHT; y++) {
       for (int x = 0; x < MAP_WIDTH; x++) {
         drawTile(map[y][x], x * TILE_SIZE, y * TILE_SIZE);
@@ -82,7 +85,6 @@
  
   public void drawBattle(Trainer opponent, Trainer player){
     textSize(20);
-   
     if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
       battleOver = true;
       if (player.getTeamNumber() == 0) {
@@ -105,10 +107,14 @@
    rect(0,380,640,100);
    fill(0);
     textSize(16);
+     if (battleState == 0) {
     text("1. " + player.getPokemon().getMove1(), 50, 410);
     text("2. " + player.getPokemon().getMove2(), 50, 430);
     text("3. " + player.getPokemon().getMove3(), 350, 410);
     text("4. " + player.getPokemon().getMove4(), 350, 430);
+    } else if (battleState == 1 || battleState == 3) {
+        text(moveResultMessage, 50, 410);
+    }
       if (opponent.getPokemon().getHP() <= 0){
       opponent.removeTeam();
     }
@@ -118,29 +124,7 @@
   }
   }
  
- 
-  public void quit(){
-    fill(0);
-    textSize(30);
-    String message = "You have embraced cowardice!";
-  }
- 
- 
-  void opponentTurn() {
-    int move = int(random(1, 5));
-    Pokemon pokemon = gymLeader.getPokemon();
-    if (move == 1) {
-      pokemon.move1(player.getPokemon());
-    } else if (move == 2) {
-      pokemon.move2(player.getPokemon());
-    } else if (move == 3) {
-      pokemon.move3();
-    } else if (move == 4) {
-      pokemon.move4();
-    }
-  }
-
- public void drawHealthBar(Pokemon pokemon, int x, int y) {
+  public void drawHealthBar(Pokemon pokemon, int x, int y) {
     fill(0);
     rect(x, y, 100, 10);
     float healthPercentage = (float) pokemon.getHP() / pokemon.getMaxHP();
@@ -151,6 +135,20 @@
     }
     rect(x, y, healthPercentage * 100, 10);
 }
+
+  void opponentTurn() {
+    int move = int(random(1, 5));
+    Pokemon pokemon = gymLeader.getPokemon();
+    if (move == 1) {
+      moveResultMessage = pokemon.move1(player.getPokemon());
+    } else if (move == 2) {
+      moveResultMessage = pokemon.move2(player.getPokemon());
+    } else if (move == 3) {
+      moveResultMessage = pokemon.move3();
+    } else if (move == 4) {
+      moveResultMessage = pokemon.move4();
+    }
+  }
  
   void keyPressed() {
     if (gameState == OVERWORLD) {
@@ -166,25 +164,28 @@
       else if (keyCode == DOWN) {
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
-    }
+    } else if (gameState == BATTLE) {
     if (playerTurn && player.getTeamNumber() != 0 && gymLeader.getTeamNumber() != 0) {
       if (key == '1') {
-        player.getPokemon().move1(gymLeader.getPokemon());
+        moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
       } else if (key == '2') {
-        player.getPokemon().move2(gymLeader.getPokemon());
+        moveResultMessage = player.getPokemon().move2(gymLeader.getPokemon());
       } else if (key == '3') {
-        player.getPokemon().move3();
+        moveResultMessage = player.getPokemon().move3();
       } else if (key == '4') {
-        player.getPokemon().move4();
+        moveResultMessage = player.getPokemon().move4();
       }
-      else if (key == 'q'){
-        quit();
-      }
-      playerTurn = false;
-      opponentTurn();
-      playerTurn = true;
+      battleState = 1;
+        } else if (battleState == 1) {
+            battleState = 2;
+            opponentTurn();
+            battleState = 3;
+        } else if (battleState == 3) {
+            battleState = 0;
+        }
     }
   }
+  
   void setup(){
     size(640, 480);
     player.addTeam(Charmander);
