@@ -76,5 +76,9 @@ abstract class Pokemon{
   abstract String move2(Pokemon opponent);
   abstract String move3();
   abstract String move4();
+  abstract String getMove1();
+  abstract String getMove2();
+  abstract String getMove3();
+  abstract String getMove4();
   
 }
