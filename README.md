@@ -9,15 +9,13 @@ Turn-based RPG creature battler based on Gen 1 Pokemon games. A single 2D map th
 Just click the Run button to run.
 
 ## Game Instructions 
-\n Up Arrow - Move forward
-\n Down Arrow - Move backward
-\n Left Arrow - Move left
-\n Right Arrow - Move right
-
-\n 1 - Move 1
-\n 2 - Move 2
-\n 3 - Move 3
-\n 4 - Move 4
-
-\n q - Quit
+Up Arrow - Move forward <br />
+Down Arrow - Move backward<br />
+Left Arrow - Move left<br />
+Right Arrow - Move right<br />
+1 - Move 1<br />
+2 - Move 2<br />
+3 - Move 3<br />
+4 - Move 4<br />
+q - Quit<br />
 
