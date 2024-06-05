@@ -26,5 +26,13 @@ class Trainer{
     team.add(newPokemon);
   }
   
+  void removeTeam(){
+    team.remove(0);
+  }
+  
+  int getTeamNumber(){
+    return team.size();
+  }
+  
     
 }

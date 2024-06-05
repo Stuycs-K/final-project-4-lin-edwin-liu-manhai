@@ -5,14 +5,16 @@ abstract class Pokemon{
   int attack;
   int defense;
   int speed;
+  String name;
   
-  public Pokemon(String t, int h, int a, int d, int s){
+  public Pokemon(String t, int h, int a, int d, int s, String n){
     type = t;
     HP = h;
     maxHP = h;
     attack = a;
     defense = d;
     speed = s;
+    name = n;
   }
   
   void applyDamage(int amount){
@@ -43,6 +45,10 @@ abstract class Pokemon{
     return speed;
   }
   
+  String getName(){
+    return name;
+  }
+  
   void setHP(int health){
     HP = health;
     if (HP > maxHP){
@@ -70,6 +76,5 @@ abstract class Pokemon{
   abstract String move2(Pokemon opponent);
   abstract String move3();
   abstract String move4();
-  abstract String name();
   
 }

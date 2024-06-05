@@ -2,7 +2,7 @@ class pokemonSquirtle extends Pokemon{
   boolean rain;
   
   public pokemonSquirtle(){
-    super("water", 44, 50, 64, 43);
+    super("water", 44, 50, 64, 43,"Squirtle");
     rain = false;
   }
   

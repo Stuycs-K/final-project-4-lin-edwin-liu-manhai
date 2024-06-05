@@ -1,6 +1,6 @@
 class pokemonEevee extends Pokemon{
   public pokemonEevee(){
-    super("normal", 65, 65, 85, 75);
+    super("normal", 65, 65, 85, 75,"Eevee");
   }
   public String move1(Pokemon opponent){
     opponent.applyDamage(4*this.getAttack()/opponent.getDefense() + 1);
