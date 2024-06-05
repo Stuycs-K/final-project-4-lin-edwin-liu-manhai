@@ -92,15 +92,13 @@
       } else {
         battleMessage = "You won the battle!";
       }
-      fill(0);
-      textSize(20);
-      text(battleMessage, 200, 250);
+      text(battleMessage, 50, 410);
     } else {
       fill(0);
     text(opponent.getPokemon().getName(), 400 , 100);
     text("HP: " + opponent.getPokemon().getHP(), 400, 130);
     text(player.getPokemon().getName(), 100 , 300);
-    text("HP: " + player.getPokemon().getHP(), 100, 350);
+    text("HP: " + player.getPokemon().getHP(), 100, 330);
     drawHealthBar(player.getPokemon(), 100, 350);
     drawHealthBar(opponent.getPokemon(), 400, 150);
    fill(255);
@@ -116,9 +114,11 @@
         text(moveResultMessage, 50, 410);
     }
       if (opponent.getPokemon().getHP() <= 0){
+        text(opponent.getPokemon().getName() + "fainted.", 50, 410);
       opponent.removeTeam();
     }
     if (player.getPokemon().getHP() <= 0){
+      text(player.getPokemon().getName() + "fainted.", 50, 410);
       player.removeTeam();
     }
   }
@@ -165,19 +165,23 @@
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
     } else if (gameState == BATTLE) {
-    if (playerTurn && player.getTeamNumber() != 0 && gymLeader.getTeamNumber() != 0) {
-      if (key == '1') {
-        moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
-      } else if (key == '2') {
-        moveResultMessage = player.getPokemon().move2(gymLeader.getPokemon());
-      } else if (key == '3') {
-        moveResultMessage = player.getPokemon().move3();
-      } else if (key == '4') {
-        moveResultMessage = player.getPokemon().move4();
-      }
-      battleState = 1;
+    if (battleState == 0) {
+            if (key == '1') {
+                moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
+                battleState = 1;
+            } else if (key == '2') {
+                moveResultMessage = player.getPokemon().move2(gymLeader.getPokemon());
+                battleState = 1;
+            } else if (key == '3') {
+                moveResultMessage = player.getPokemon().move3();
+                battleState = 1;
+            } else if (key == '4') {
+                moveResultMessage = player.getPokemon().move4();
+                battleState = 1;
+            }
         } else if (battleState == 1) {
             battleState = 2;
+        } else if (battleState == 2) {
             opponentTurn();
             battleState = 3;
         } else if (battleState == 3) {
@@ -191,7 +195,7 @@
     player.addTeam(Charmander);
     player.addTeam(Bulbasaur);
     player.addTeam(Squirtle);
-    gymLeader.addTeam(Mewtwo);
+    gymLeader.addTeam(Pikachu);
   }
  
   void draw() {
@@ -205,6 +209,5 @@
   } else if (gameState == BATTLE) {
     drawBattle(gymLeader,player);
   }
-  println(frameRate);
  
 }
