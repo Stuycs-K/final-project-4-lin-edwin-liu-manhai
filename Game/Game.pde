@@ -27,6 +27,7 @@
   final int opponentresult = 3;
   int battleState = playerturn;
   String moveResultMessage = "";
+  String moveResult = "";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
@@ -111,15 +112,17 @@
     text("3. " + player.getPokemon().getMove3(), 350, 410);
     text("4. " + player.getPokemon().getMove4(), 350, 430);
     } else if (battleState == 1 || battleState == 3) {
-        text(moveResultMessage, 50, 410);
-    }
-      if (opponent.getPokemon().getHP() <= 0){
-        text(opponent.getPokemon().getName() + "fainted.", 50, 410);
+       if (opponent.getPokemon().getHP() <= 0){
+        moveResult = opponent.getPokemon().getName() + " fainted.";
       opponent.removeTeam();
+      text(moveResult, 50, 440);
     }
     if (player.getPokemon().getHP() <= 0){
-      text(player.getPokemon().getName() + "fainted.", 50, 410);
+      moveResult = player.getPokemon().getName() + " fainted.";
       player.removeTeam();
+      text(moveResult, 50, 440);
+    }
+        text(moveResultMessage, 50, 410);
     }
   }
   }
@@ -165,7 +168,7 @@
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
     } else if (gameState == BATTLE) {
-    if (battleState == 0) {
+    if (battleState == 0 && battleOver == false) {
             if (key == '1') {
                 moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
                 battleState = 1;
