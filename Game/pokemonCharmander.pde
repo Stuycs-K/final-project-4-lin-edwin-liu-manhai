@@ -7,7 +7,7 @@ class pokemonCharmander extends Pokemon{
 
   public String move1(Pokemon opponent) {
     opponent.applyDamage(4*this.getAttack()/opponent.getDefense() + 1);
-    return this + " attacked "+ opponent + " and dealt "+ (4*this.getAttack()/opponent.getDefense() + 1) +
+    return getName() + " attacked "+ opponent.getName()  + " and dealt "+ (4*this.getAttack()/opponent.getDefense() + 1) +
       " points of damage with Scratch.";
   }
 
@@ -23,21 +23,33 @@ class pokemonCharmander extends Pokemon{
       damage = damage*2;
     }
     opponent.applyDamage(damage*this.getAttack()/opponent.getDefense() + 1);
-    return this + " attacked "+ opponent + " and dealt "+ damage +
+    return getName() + " attacked "+ opponent.getName()  + " and dealt "+ damage +
       " points of damage with Ember.";
   }
 
   public String move3() {
     this.attack *= 1.5;
     this.speed *= 1.5;
-    return this + "used Dragon Dance. Charmander's attack and speed rose.";
+    return getName() + " used Dragon Dance. Charmander's attack and speed rose.";
   }
 
   public String move4() {
     sun = true;
-    return this + "uses Sunny Day. It started to shine.";
+    return getName() + " uses Sunny Day. The sunlight got bright.";
   }
    public String name(){
     return "Charmander";
   }
+  public String getMove1(){
+    return "Scratch";
+  }
+  public String getMove2(){
+    return "Ember";
+  };
+  public String getMove3(){
+    return "Dragon Dance";
+  };
+  public String getMove4(){
+    return "Sunny Day";
+  };
 }

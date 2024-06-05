@@ -6,7 +6,7 @@ class pokemonBulbasaur extends Pokemon{
   
   public String move1(Pokemon opponent){
     opponent.applyDamage(4*this.getAttack()/opponent.getDefense() + 1);
-    return this + " attacked "+ opponent + " and dealt "+ (4*this.getAttack()/opponent.getDefense() + 1) +
+    return getName() + " attacked "+ opponent.getName()  + " and dealt "+ (4*this.getAttack()/opponent.getDefense() + 1) +
     " points of damage with Tackle.";
   }
 
@@ -19,22 +19,35 @@ class pokemonBulbasaur extends Pokemon{
       damage = 2;
     }
     opponent.applyDamage(damage*this.getAttack()/opponent.getDefense() + 1);
-    return this + " attacked "+ opponent + " and dealt "+ damage +
+    return getName() + " attacked "+ opponent.getName()  + " and dealt "+ damage +
     " points of damage with Vine Whip.";
   }
 
   public String move3(){
     this.attack *= 2;
-    return this + "used Growth. Bulbasaur's attack rose.";
+    return getName() + " used Growth. Bulbasaur's attack rose.";
   }
 
   public String move4(){
     HP += (maxHP/2);
-    return this + "used Synthesis. Bulbasaur's was healed.";
+    return getName() + " used Synthesis. Bulbasaur's was healed.";
   }
   
   public String name(){
     return "Bulbasaur";
   }
+  
+  public String getMove1(){
+    return "Tackle";
+  }
+  public String getMove2(){
+    return "Vine Whip";
+  };
+  public String getMove3(){
+    return "Growth";
+  };
+  public String getMove4(){
+    return "Synthesis";
+  };
   
 }
