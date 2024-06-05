@@ -40,14 +40,6 @@
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
   };
  
-  public void textBox(int row, int col, int width, int height, String text){
-    rect(col,row,width,height);
-    text(text, col+20, row+20);
-  }
- 
-  public void colorByPercent(float percentage){
-    fill(255 * percentage, 255 * (1 - percentage), 0);
-  }
  
   public void drawOverworld(){
     final int TILE_SIZE = 32;
@@ -98,18 +90,25 @@
       } else {
         battleMessage = "You won the battle!";
       }
+      fill(0);
+      textSize(20);
+      text(battleMessage, 200, 250);
     } else {
-      text(player.getPokemon().getName(), 150 , 150);
-    text("HP: " + player.getPokemon().getHP(), 150, 200);
-
-    text(opponent.getPokemon().getName(), 300 , 150);
-    text("HP: " + opponent.getPokemon().getHP(), 300, 200);
-   
+      fill(0);
+    text(opponent.getPokemon().getName(), 400 , 100);
+    text("HP: " + opponent.getPokemon().getHP(), 400, 130);
+    text(player.getPokemon().getName(), 100 , 300);
+    text("HP: " + player.getPokemon().getHP(), 100, 350);
+    drawHealthBar(player.getPokemon(), 100, 350);
+    drawHealthBar(opponent.getPokemon(), 400, 150);
+   fill(255);
+   rect(0,380,640,100);
+   fill(0);
     textSize(16);
-    text("1.Move 1", 50 , 300);
-    text("2.Move 2", 50 , 350);
-    text("3.Move 3", 50 , 400);
-    text("4.Move 4", 50 , 450);
+    text("1. " + player.getPokemon().getMove1(), 50, 410);
+    text("2. " + player.getPokemon().getMove2(), 50, 430);
+    text("3. " + player.getPokemon().getMove3(), 350, 410);
+    text("4. " + player.getPokemon().getMove4(), 350, 430);
       if (opponent.getPokemon().getHP() <= 0){
       opponent.removeTeam();
     }
@@ -124,25 +123,34 @@
     fill(0);
     textSize(30);
     String message = "You have embraced cowardice!";
-    textBox(50,50,300,300,message);
   }
  
  
   void opponentTurn() {
     int move = int(random(1, 5));
-    String damage = "";
     Pokemon pokemon = gymLeader.getPokemon();
     if (move == 1) {
-      damage = pokemon.move1(player.getPokemon());
+      pokemon.move1(player.getPokemon());
     } else if (move == 2) {
-      damage = pokemon.move2(player.getPokemon());
+      pokemon.move2(player.getPokemon());
     } else if (move == 3) {
-      damage = pokemon.move3();
+      pokemon.move3();
     } else if (move == 4) {
-      damage = pokemon.move4();
+      pokemon.move4();
     }
   }
 
+ public void drawHealthBar(Pokemon pokemon, int x, int y) {
+    fill(0);
+    rect(x, y, 100, 10);
+    float healthPercentage = (float) pokemon.getHP() / pokemon.getMaxHP();
+    if (healthPercentage > 0.5){
+    fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
+    }
+    rect(x, y, healthPercentage * 100, 10);
+}
  
   void keyPressed() {
     if (gameState == OVERWORLD) {
