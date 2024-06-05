@@ -38,4 +38,16 @@ class pokemonSquirtle extends Pokemon{
    public String name(){
     return "Squirtle";
   }
+  public String getMove1(){
+    return "Pound";
+  }
+  public String getMove2(){
+    return "Water Gun";
+  };
+  public String getMove3(){
+    return "Withdraw";
+  };
+  public String getMove4(){
+    return "Rain Dance";
+  };
 }

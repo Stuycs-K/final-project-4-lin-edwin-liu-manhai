@@ -34,4 +34,16 @@ class pokemonPikachu extends Pokemon{
    public String name(){
     return "Pikachu";
   }
+  public String getMove1(){
+    return "Quick Attack";
+  }
+  public String getMove2(){
+    return "Thunderbolt";
+  };
+  public String getMove3(){
+    return "Agility";
+  };
+  public String getMove4(){
+    return "Nasty Plot";
+  };
 }
