@@ -113,9 +113,13 @@
     if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
       battleOver = true;
       if (player.getPokemon().getHP() <= 0) {
+        fill(0);
         battleMessage = "You lost the battle!";
+        text(battleMessage, 300,300);
       } else {
+        fill(0);
         battleMessage = "You won the battle!";
+        text(battleMessage, 300,300);
       }
     }
   }
