@@ -1,53 +1,21 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/syDSSnTt)
 # APCS2 Final Project
 ## Group Info
+Edwin Lin and Manhai Liu : Second Term Trainers
 ## Overview
-## Instructions
-Phase 1: Core Game Structure
-    Create Basic Framework (Together)
-    Implement main method
-    Initialize game settings and configurations
-    UI Drawing Methods (Manhai)
-    Implement drawText
-    Implement TextBox
-    Implement colorByPercent
-    Implement drawBackground
-    Implement drawScreen
+Turn-based RPG creature battler based on Gen 1 Pokemon games. A single 2D map that has 2-3 NPC trainers and a boss gym leader in processing. Walking into the line of sight of one triggers a turn-based pokemon battle with pokemon and moves. The player will receive a pokemon at the start and battle their way through the gym until the epic finale with the gym leader who has no name currently. There are no items involved and you may not run away from a battle. 
 
-Helper Methods (Edwin)
-    Implement createRandomTrainer
-    Implement getRandomEnemyAttack
-    Implement clearArea
+## Instructions to Run
+Just click the Run button to run.
 
-Phase 2: Core Mechanics
-Trainer Class (Manhai)
-    Basic Implementation
-    Define instance variables: name, position, color, team
-    Implement constructor
-    Methods
-    Implement move
-    Implement getTeam and setTeam
-
-Pokemon Class (Edwin)
-    Define instance variables: name, type, HP, attack, defense, speed
-    Implement constructor
-Methods
-    Implement move1-4 and applyDamage
-    Implement getter and setter methods
-
-Phase 4: Battle System
-    Implement run method in Game class
-    Handle player and opponent turns and attack commands
-
-Phase 5: Overworld and Interaction
-Overworld Map (Manhai)
-    Design 2D map layout
-    Implement drawOverworld
-    Implement switchOverworld
-    
-    Trainer Interaction (Edwin)
-    Implement NPC and Gym Leader interactions
-    Trigger battles upon player approach
-<<<<<<< HEAD
-<<<<<<< HEAD
+## Game Instructions 
+Up Arrow - Move forward <br />
+Down Arrow - Move backward<br />
+Left Arrow - Move left<br />
+Right Arrow - Move right<br />
+1 - Move 1<br />
+2 - Move 2<br />
+3 - Move 3<br />
+4 - Move 4<br />
+q - Quit<br />
 

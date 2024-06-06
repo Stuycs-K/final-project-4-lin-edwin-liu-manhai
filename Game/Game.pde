@@ -21,6 +21,13 @@
   int playerY = 12;
   int trainerX = 9;
   int trainerY = 2;
+  final int playerturn = 0;
+  final int playerresult = 1;
+  final int opponentturn = 2;
+  final int opponentresult = 3;
+  int battleState = playerturn;
+  String moveResultMessage = "";
+  String moveResult = "";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
@@ -40,23 +47,12 @@
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
   };
  
-  public void textBox(int row, int col, int width, int height, String text){
-    rect(col,row,width,height);
-    text(text, col+20, row+20);
-  }
- 
-  public void colorByPercent(float percentage){
-    fill(255 * percentage, 255 * (1 - percentage), 0);
-  }
  
   public void drawOverworld(){
     final int TILE_SIZE = 32;
     final int MAP_WIDTH = 20;
     final int MAP_HEIGHT = 15;
     gameState = OVERWORLD;
-   
-    //drawScreen();
-
     for (int y = 0; y < MAP_HEIGHT; y++) {
       for (int x = 0; x < MAP_WIDTH; x++) {
         drawTile(map[y][x], x * TILE_SIZE, y * TILE_SIZE);
@@ -90,30 +86,9 @@
  
   public void drawBattle(Trainer opponent, Trainer player){
     textSize(20);
-    text(player.getPokemon().getName(), 150 , 150);
-    text("HP: " + player.getPokemon().getHP(), 150, 200);
-
-    text(opponent.getPokemon().getName(), 300 , 150);
-    text("HP: " + opponent.getPokemon().getHP(), 300, 200);
-   
-    textSize(16);
-    text("1.Move 1", 50 , 300);
-    text("2.Move 2", 50 , 350);
-    text("3.Move 3", 50 , 400);
-    text("4.Move 4", 50 , 450);
-   
-    if (player.getPokemon().getHP() <= 0){
-      player.removeTeam();
-    }
-   
-    if (opponent.getPokemon().getHP() <= 0){
-      opponent.removeTeam();
-    }
-   
     if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
       battleOver = true;
-      if (player.getPokemon().getHP() <= 0) {
-        fill(0);
+      if (player.getTeamNumber() == 0) {
         battleMessage = "You lost the battle!";
         text(battleMessage, 300,300);
       } else {
@@ -121,33 +96,65 @@
         battleMessage = "You won the battle!";
         text(battleMessage, 300,300);
       }
+      text(battleMessage, 50, 410);
+    } else {
+      fill(0);
+    text(opponent.getPokemon().getName(), 400 , 100);
+    text("HP: " + opponent.getPokemon().getHP(), 400, 130);
+    text(player.getPokemon().getName(), 100 , 300);
+    text("HP: " + player.getPokemon().getHP(), 100, 330);
+    drawHealthBar(player.getPokemon(), 100, 350);
+    drawHealthBar(opponent.getPokemon(), 400, 150);
+   fill(255);
+   rect(0,380,640,100);
+   fill(0);
+    textSize(16);
+     if (battleState == 0) {
+    text("1. " + player.getPokemon().getMove1(), 50, 410);
+    text("2. " + player.getPokemon().getMove2(), 50, 430);
+    text("3. " + player.getPokemon().getMove3(), 350, 410);
+    text("4. " + player.getPokemon().getMove4(), 350, 430);
+    } else if (battleState == 1 || battleState == 3) {
+       if (opponent.getPokemon().getHP() <= 0){
+        moveResult = opponent.getPokemon().getName() + " fainted.";
+      opponent.removeTeam();
+      text(moveResult, 50, 440);
+    }
+    if (player.getPokemon().getHP() <= 0){
+      moveResult = player.getPokemon().getName() + " fainted.";
+      player.removeTeam();
+      text(moveResult, 50, 440);
+    }
+        text(moveResultMessage, 50, 410);
     }
   }
- 
- 
-  public void quit(){
-    fill(0);
-    textSize(30);
-    String message = "You have embraced cowardice!";
-    textBox(50,50,300,300,message);
   }
  
- 
+  public void drawHealthBar(Pokemon pokemon, int x, int y) {
+    fill(0);
+    rect(x, y, 100, 10);
+    float healthPercentage = (float) pokemon.getHP() / pokemon.getMaxHP();
+    if (healthPercentage > 0.5){
+    fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
+    }
+    rect(x, y, healthPercentage * 100, 10);
+}
+
   void opponentTurn() {
     int move = int(random(1, 5));
-    String damage = "";
     Pokemon pokemon = gymLeader.getPokemon();
     if (move == 1) {
-      damage = pokemon.move1(player.getPokemon());
+      moveResultMessage = pokemon.move1(player.getPokemon());
     } else if (move == 2) {
-      damage = pokemon.move2(player.getPokemon());
+      moveResultMessage = pokemon.move2(player.getPokemon());
     } else if (move == 3) {
-      damage = pokemon.move3();
+      moveResultMessage = pokemon.move3();
     } else if (move == 4) {
-      damage = pokemon.move4();
+      moveResultMessage = pokemon.move4();
     }
   }
-
  
   void keyPressed() {
     if (gameState == OVERWORLD) {
@@ -163,31 +170,38 @@
       else if (keyCode == DOWN) {
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
-    }
-    if (playerTurn) {
-      if (key == '1') {
-        player.getPokemon().move1(gymLeader.getPokemon());
-      } else if (key == '2') {
-        player.getPokemon().move2(gymLeader.getPokemon());
-      } else if (key == '3') {
-        player.getPokemon().move3();
-      } else if (key == '4') {
-        player.getPokemon().move4();
-      }
-      else if (key == 'q'){
-        quit();
-      }
-      playerTurn = false;
-      opponentTurn();
-      playerTurn = true;
+    } else if (gameState == BATTLE) {
+    if (battleState == 0 && battleOver == false) {
+            if (key == '1') {
+                moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
+                battleState = 1;
+            } else if (key == '2') {
+                moveResultMessage = player.getPokemon().move2(gymLeader.getPokemon());
+                battleState = 1;
+            } else if (key == '3') {
+                moveResultMessage = player.getPokemon().move3();
+                battleState = 1;
+            } else if (key == '4') {
+                moveResultMessage = player.getPokemon().move4();
+                battleState = 1;
+            }
+        } else if (battleState == 1) {
+            battleState = 2;
+        } else if (battleState == 2) {
+            opponentTurn();
+            battleState = 3;
+        } else if (battleState == 3) {
+            battleState = 0;
+        }
     }
   }
+  
   void setup(){
     size(640, 480);
     player.addTeam(Charmander);
     player.addTeam(Bulbasaur);
     player.addTeam(Squirtle);
-    gymLeader.addTeam(Mewtwo);
+    gymLeader.addTeam(Pikachu);
   }
  
   void draw() {
@@ -201,6 +215,5 @@
   } else if (gameState == BATTLE) {
     drawBattle(gymLeader,player);
   }
-  println(frameRate);
  
 }
