@@ -27,6 +27,7 @@
   final int opponentresult = 3;
   int battleState = playerturn;
   String moveResultMessage = "";
+  String moveResult = "";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2},
@@ -65,15 +66,22 @@
 
   public void drawTile(int tileType, int x, int y) {
     if (tileType == 0) {
-      fill(34, 139, 34);
+      PImage tree = loadImage("Tree.png");
+      tree.resize(32,32);
+      image(tree,x,y);
     }
+    
     else if (tileType == 1) {
-      fill(0, 0, 255);
+      PImage water = loadImage("Water.png");
+      water.resize(32,32);
+      image(water,x,y);
     }
+    
     else if (tileType == 2) {
-      fill(139, 69, 19);
+      PImage tile = loadImage("Tile.png");
+      tile.resize(32,32);
+      image(tile,x,y);
     }
-    rect(x, y, TILE_SIZE, TILE_SIZE);
   }
  
   boolean checkTrainerProximity() {
@@ -89,8 +97,11 @@
       battleOver = true;
       if (player.getTeamNumber() == 0) {
         battleMessage = "You lost the battle!";
+        text(battleMessage, 300,300);
       } else {
+        fill(0);
         battleMessage = "You won the battle!";
+        text(battleMessage, 300,300);
       }
       text(battleMessage, 50, 410);
     } else {
@@ -111,15 +122,17 @@
     text("3. " + player.getPokemon().getMove3(), 350, 410);
     text("4. " + player.getPokemon().getMove4(), 350, 430);
     } else if (battleState == 1 || battleState == 3) {
-        text(moveResultMessage, 50, 410);
-    }
-      if (opponent.getPokemon().getHP() <= 0){
-        text(opponent.getPokemon().getName() + "fainted.", 50, 410);
+       if (opponent.getPokemon().getHP() <= 0){
+        moveResult = opponent.getPokemon().getName() + " fainted.";
       opponent.removeTeam();
+      text(moveResult, 50, 440);
     }
     if (player.getPokemon().getHP() <= 0){
-      text(player.getPokemon().getName() + "fainted.", 50, 410);
+      moveResult = player.getPokemon().getName() + " fainted.";
       player.removeTeam();
+      text(moveResult, 50, 440);
+    }
+        text(moveResultMessage, 50, 410);
     }
   }
   }
@@ -165,7 +178,7 @@
         if (playerY < MAP_HEIGHT - 1) playerY++;
       }
     } else if (gameState == BATTLE) {
-    if (battleState == 0) {
+    if (battleState == 0 && battleOver == false) {
             if (key == '1') {
                 moveResultMessage = player.getPokemon().move1(gymLeader.getPokemon());
                 battleState = 1;
