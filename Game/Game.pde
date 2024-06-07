@@ -66,15 +66,22 @@
 
   public void drawTile(int tileType, int x, int y) {
     if (tileType == 0) {
-      fill(34, 139, 34);
+      PImage tree = loadImage("Tree.png");
+      tree.resize(32,32);
+      image(tree,x,y);
     }
+    
     else if (tileType == 1) {
-      fill(0, 0, 255);
+      PImage water = loadImage("Water.png");
+      water.resize(32,32);
+      image(water,x,y);
     }
+    
     else if (tileType == 2) {
-      fill(139, 69, 19);
+      PImage tile = loadImage("Tile.png");
+      tile.resize(32,32);
+      image(tile,x,y);
     }
-    rect(x, y, TILE_SIZE, TILE_SIZE);
   }
  
   boolean checkTrainerProximity() {
