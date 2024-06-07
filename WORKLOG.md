@@ -14,6 +14,11 @@ Started on functions like drawBattle or finish keypressed. Error that says Pokem
 
 Worked on all the methods and functions and revised many of them. Had to rename a lot of the classes so it wouldn't conflict. Finally finished the project(albeit a little worrisome) after 4+ hrs of coding and not a lot of sleep. 
 
+### Date: 6/5/24
+
+Finished README.md currently. Will have to add in instructions for potential new add-ons.
+
+
 ## GROUP MEMBER 2: Edwin Lin
 
 ### date 5/23/24
