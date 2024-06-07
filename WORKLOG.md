@@ -18,6 +18,10 @@ Worked on all the methods and functions and revised many of them. Had to rename 
 
 Finished README.md currently. Will have to add in instructions for potential new add-ons.
 
+### Date: 6/6/24-6/7/24
+
+Worked on adding sprites and pictures of the game to flesh out game more.
+
 
 ## GROUP MEMBER 2: Edwin Lin
 
