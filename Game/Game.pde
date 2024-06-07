@@ -72,9 +72,9 @@
     }
     
     else if (tileType == 1) {
-      PImage tile = loadImage("Tile.png");
-      tile.resize(32,32);
-      image(tile,x,y);
+      PImage grass = loadImage("Grass.png");
+      grass.resize(32,32);
+      image(grass,x,y);
     }
   }
  
@@ -91,13 +91,11 @@
       battleOver = true;
       if (player.getTeamNumber() == 0) {
         battleMessage = "You lost the battle!";
-        text(battleMessage, 300,300);
       } else {
         fill(0);
         battleMessage = "You won the battle!";
-        text(battleMessage, 300,300);
       }
-      text(battleMessage, 50, 410);
+        text(battleMessage, 230,230);
     } else {
       fill(0);
     text(opponent.getPokemon().getName(), 400 , 100);
