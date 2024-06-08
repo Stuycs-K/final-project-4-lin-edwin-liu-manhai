@@ -97,13 +97,22 @@
       }
         text(battleMessage, 230,230);
     } else {
-      fill(0);
-    text(opponent.getPokemon().getName(), 400 , 100);
-    text("HP: " + opponent.getPokemon().getHP(), 400, 130);
-    text(player.getPokemon().getName(), 100 , 300);
-    text("HP: " + player.getPokemon().getHP(), 100, 330);
-    drawHealthBar(player.getPokemon(), 100, 350);
-    drawHealthBar(opponent.getPokemon(), 400, 150);
+    fill(0);
+    PImage background = loadImage("Background.png");
+    background.resize(640,380);
+    image(background,0,0);
+    text(opponent.getPokemon().getName(), 50 , 50);
+    text("HP: " + opponent.getPokemon().getHP(), 50, 80);
+    text(player.getPokemon().getName(), 400 , 300);
+    text("HP: " + player.getPokemon().getHP(), 400, 330);
+    drawHealthBar(player.getPokemon(), 400, 350);
+    drawHealthBar(opponent.getPokemon(), 50, 100);
+    PImage playerP = loadImage(player.getPokemon().getName() + "B.png");
+    playerP.resize(250,250);
+    image(playerP,66,200);
+    PImage opponentP = loadImage(opponent.getPokemon().getName() + "F.png");
+    opponentP.resize(250,250);
+    image(opponentP,350,50);
    fill(255);
    rect(0,380,640,100);
    fill(0);
