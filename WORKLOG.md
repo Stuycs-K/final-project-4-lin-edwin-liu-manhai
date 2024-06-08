@@ -48,3 +48,6 @@ Finished all pokemon classes, made adjustments to pokemon and added weather
 ### date 6/2/24
 
 Debugging methods
+
+### date 6/7/24
+Tried debugging text when pokemon faints
