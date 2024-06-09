@@ -28,6 +28,7 @@
   int battleState = playerturn;
   String moveResultMessage = "";
   String moveResult = "";
+  String movement = "Forward";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
@@ -58,10 +59,34 @@
         drawTile(map[y][x], x * TILE_SIZE, y * TILE_SIZE);
       }
     }
- 
-    fill(255, 0, 0);
-    rect(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    rect(trainerX * TILE_SIZE, trainerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    if (movement == "Forward"){
+      PImage player = loadImage("Forward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Backward"){
+      PImage player = loadImage("Backward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Left"){
+      PImage player = loadImage("Leftward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Right"){
+      PImage player = loadImage("Rightward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    
+    PImage opponent = loadImage("Trainer.png");
+    opponent.resize(32,32);
+    image(opponent,trainerX * TILE_SIZE,trainerY * TILE_SIZE);
   }
 
   public void drawTile(int tileType, int x, int y) {
@@ -97,13 +122,22 @@
       }
         text(battleMessage, 230,230);
     } else {
-      fill(0);
-    text(opponent.getPokemon().getName(), 400 , 100);
-    text("HP: " + opponent.getPokemon().getHP(), 400, 130);
-    text(player.getPokemon().getName(), 100 , 300);
-    text("HP: " + player.getPokemon().getHP(), 100, 330);
-    drawHealthBar(player.getPokemon(), 100, 350);
-    drawHealthBar(opponent.getPokemon(), 400, 150);
+    fill(0);
+    PImage background = loadImage("Background.png");
+    background.resize(640,380);
+    image(background,0,0);
+    text(opponent.getPokemon().getName(), 50 , 50);
+    text("HP: " + opponent.getPokemon().getHP(), 50, 80);
+    text(player.getPokemon().getName(), 400 , 300);
+    text("HP: " + player.getPokemon().getHP(), 400, 330);
+    drawHealthBar(player.getPokemon(), 400, 350);
+    drawHealthBar(opponent.getPokemon(), 50, 100);
+    PImage playerP = loadImage(player.getPokemon().getName() + "B.png");
+    playerP.resize(250,250);
+    image(playerP,66,200);
+    PImage opponentP = loadImage(opponent.getPokemon().getName() + "F.png");
+    opponentP.resize(250,250);
+    image(opponentP,350,50);
    fill(255);
    rect(0,380,640,100);
    fill(0);
@@ -158,16 +192,28 @@
   void keyPressed() {
     if (gameState == OVERWORLD) {
       if (keyCode == LEFT) {
-        if (playerX > 0) playerX--;
+        if (playerX > 0) {
+          playerX--;
+         movement = "Left";
+        }
       }
       else if (keyCode == RIGHT) {
-        if (playerX < MAP_WIDTH - 1) playerX++;
+        if (playerX < MAP_WIDTH - 1) {
+          playerX++;
+          movement = "Right";
+        }
       }
       else if (keyCode == UP) {
-        if (playerY > 0) playerY--;
+        if (playerY > 0) {
+          playerY--;
+          movement = "Forward";
+        }
       }
       else if (keyCode == DOWN) {
-        if (playerY < MAP_HEIGHT - 1) playerY++;
+        if (playerY < MAP_HEIGHT - 1) {
+          playerY++;
+          movement = "Backward";
+        }
       }
     } else if (gameState == BATTLE) {
     if (battleState == 0 && battleOver == false) {
