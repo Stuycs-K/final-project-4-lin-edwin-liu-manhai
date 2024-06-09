@@ -28,6 +28,7 @@
   int battleState = playerturn;
   String moveResultMessage = "";
   String moveResult = "";
+  String movement = "Forward";
  
   int[][] map = {
   {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
@@ -58,10 +59,34 @@
         drawTile(map[y][x], x * TILE_SIZE, y * TILE_SIZE);
       }
     }
- 
-    fill(255, 0, 0);
-    rect(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    rect(trainerX * TILE_SIZE, trainerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    if (movement == "Forward"){
+      PImage player = loadImage("Forward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Backward"){
+      PImage player = loadImage("Backward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Left"){
+      PImage player = loadImage("Leftward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    if (movement == "Right"){
+      PImage player = loadImage("Rightward.png");
+      player.resize(32,32);
+      image(player,playerX * TILE_SIZE,playerY * TILE_SIZE);
+    }
+    
+    
+    PImage opponent = loadImage("Trainer.png");
+    opponent.resize(32,32);
+    image(opponent,trainerX * TILE_SIZE,trainerY * TILE_SIZE);
   }
 
   public void drawTile(int tileType, int x, int y) {
@@ -167,16 +192,28 @@
   void keyPressed() {
     if (gameState == OVERWORLD) {
       if (keyCode == LEFT) {
-        if (playerX > 0) playerX--;
+        if (playerX > 0) {
+          playerX--;
+         movement = "Left";
+        }
       }
       else if (keyCode == RIGHT) {
-        if (playerX < MAP_WIDTH - 1) playerX++;
+        if (playerX < MAP_WIDTH - 1) {
+          playerX++;
+          movement = "Right";
+        }
       }
       else if (keyCode == UP) {
-        if (playerY > 0) playerY--;
+        if (playerY > 0) {
+          playerY--;
+          movement = "Forward";
+        }
       }
       else if (keyCode == DOWN) {
-        if (playerY < MAP_HEIGHT - 1) playerY++;
+        if (playerY < MAP_HEIGHT - 1) {
+          playerY++;
+          movement = "Backward";
+        }
       }
     } else if (gameState == BATTLE) {
     if (battleState == 0 && battleOver == false) {
