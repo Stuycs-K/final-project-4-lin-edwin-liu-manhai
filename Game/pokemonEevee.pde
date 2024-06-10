@@ -22,7 +22,7 @@ class pokemonEevee extends Pokemon{
   }
 
   public String move4(){
-    HP += (maxHP/2);
+    setHP(HP += (maxHP/2));
     return getName() + " used Recover. Eevee's was healed.";
   }
    public String name(){
