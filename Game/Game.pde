@@ -194,7 +194,26 @@
   }
  
   void keyPressed() {
-    if (gameState == OVERWORLD) {
+     if (gameState == START_SCREEN) {
+    if (key == '1') {
+      addPokemonToTeam(new pokemonCharmander());
+    } else if (key == '2') {
+      addPokemonToTeam(new pokemonBulbasaur());
+    } else if (key == '3') {
+      addPokemonToTeam(new pokemonSquirtle());
+    } else if (key == '4') {
+      addPokemonToTeam(new pokemonEevee());
+    } else if (key == '5') {
+      addPokemonToTeam(new pokemonPikachu());
+    } else if (key == 'q') {
+      setDifficulty(1);
+    } else if (key == 'w') {
+      setDifficulty(2);
+    } else if (key == 'e') {
+      setDifficulty(3);
+    }
+     }
+   else if (gameState == OVERWORLD) {
       if (keyCode == LEFT) {
         if (playerX > 0) {
           playerX--;
