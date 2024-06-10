@@ -11,7 +11,8 @@
   Trainer gymLeader = new Trainer("Itachi", team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
-  int gameState = OVERWORLD;
+  final int START_SCREEN = 2;
+  int gameState = START_SCREEN;
   boolean battleOver = false;
   String battleMessage;
   final int TILE_SIZE = 32;
@@ -29,6 +30,7 @@
   String moveResultMessage = "";
   String moveResult = "";
   String movement = "Forward";
+  String startScreenMessage = "";
  
   int[][] map = 
   {
@@ -245,22 +247,35 @@
   
   void setup(){
     size(640, 480);
-    player.addTeam(Charmander);
-    player.addTeam(Bulbasaur);
-    player.addTeam(Squirtle);
-    gymLeader.addTeam(Pikachu);
   }
  
   void draw() {
   background(255);
  
-  if (gameState == OVERWORLD) {
+  if (gameState == START_SCREEN) {
+    drawStartScreen();
+  } else if (gameState == OVERWORLD) {
     drawOverworld();
     if (checkTrainerProximity()) {
       gameState = BATTLE;
     }
   } else if (gameState == BATTLE) {
-    drawBattle(gymLeader,player);
-  }
+    drawBattle(gymLeader, player);
+  }}
  
+ void drawStartScreen() {
+  fill(0);
+  textSize(20);
+  text("Choose your Pokémon (press 1-5):", 10, 30);
+  text("1. Charmander", 10, 60);
+  text("2. Bulbasaur", 10, 90);
+  text("3. Squirtle", 10, 120);
+  text("4. Eevee", 10, 150);
+  text("5. Pikachu", 10, 180);
+  text(startScreenMessage, 10, 210);
+  text("Choose difficulty (press Q, W, E):", 10, 240);
+  text("Q: Easy", 10, 270);
+  text("W: Medium", 10, 300);
+  text("E: Hard", 10, 330);
 }
+ 
