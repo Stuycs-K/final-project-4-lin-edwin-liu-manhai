@@ -2,6 +2,14 @@
 
 ## GROUP MEMBER 1: Manhai Liu
 
+### Date: 5/23/24
+
+Implemented the methods inside Game, Pokemon and Trainer. Need to write the methods next.
+
+### Date: 5/24/24
+
+Fixed some errors in Game up.
+
 ### Date: 5/29/24
 
 Started on implementing game mechanics like opponent turn and keypressed, which is basically player turn while also fixing up on errors in the code. 

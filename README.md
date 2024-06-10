@@ -8,14 +8,27 @@ Turn-based RPG creature battler based on Gen 1 Pokemon games. A single 2D map th
 ## Instructions to Run
 Just click the Run button to run.
 
-## Game Instructions 
-Up Arrow - Move forward <br />
-Down Arrow - Move backward<br />
-Left Arrow - Move left<br />
-Right Arrow - Move right<br />
-1 - Move 1<br />
-2 - Move 2<br />
-3 - Move 3<br />
-4 - Move 4<br />
-q - Quit<br />
+## Starter Screen Instructions 
+1 - Add Charmander onto your team<br />
+2 - Add Bulbasaur onto your team<br />
+3 - Add Squirtle onto your team<br />
+4 - Add Eevee onto your team<br />
+5 - Add Pikachu onto your team<br />
 
+Q - Easy mode<br />
+W - Medium mode<br />
+E - Hard mode<br />
+
+
+
+## Game and Map Instructions 
+Up Arrow - Player moves forward <br />
+Down Arrow - Player moves backward<br />
+Left Arrow - Player moves left<br />
+Right Arrow - Player moves right<br />
+1 - Pokemon's move 1<br />
+2 - Pokemon's move 2<br />
+3 - Pokemon's move 3<br />
+4 - Pokemon's move 4<br />
+
+Link to our video explaining the features: https://drive.google.com/file/d/11XL-6jMC_R5FLVq-qL2MaJadHLVLRXDa/view?usp=drive_link 
