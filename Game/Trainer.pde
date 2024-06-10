@@ -13,7 +13,7 @@ class Trainer{
   }
   
   
-  ArrayList getTeam(int partynumber){
+  ArrayList getTeam(){
     return team;
   }
   

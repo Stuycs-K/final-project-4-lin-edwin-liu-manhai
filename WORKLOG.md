@@ -49,5 +49,22 @@ Finished all pokemon classes, made adjustments to pokemon and added weather
 
 Debugging methods
 
+### date 6/3/24
+
+Fixed main tab
+
+### date 6/4/24
+
+Changed getMove in all the pokemon classes to return text correctly. Fixed the errors with drawbattle when choosing moves and koing pokemon. Updated battle system so that the new textbox works. Changed some of the move texts.
+
+### date 6/5/24
+
+Changed this into getMove in pokemon subclasses. Remade the turn order in the battle screen and fixed when it wouldn't proceed properly.
+
 ### date 6/7/24
 Tried debugging text when pokemon faints
+
+### date 6/9/24
+Changed overworld map. Added a new startscreen to the game where start screen lets u make ur pokemon team and set difficulty level. easy mode is the starters
+medium is starters + eevee + pikachu
+hard is mewtwo
