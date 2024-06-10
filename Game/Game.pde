@@ -11,7 +11,8 @@
   Trainer gymLeader = new Trainer("Itachi", team2);
   final int OVERWORLD = 0;
   final int BATTLE = 1;
-  int gameState = OVERWORLD;
+  final int START_SCREEN = 2;
+  int gameState = START_SCREEN;
   boolean battleOver = false;
   String battleMessage;
   final int TILE_SIZE = 32;
@@ -29,24 +30,27 @@
   String moveResultMessage = "";
   String moveResult = "";
   String movement = "Forward";
+  String startScreenMessage = "";
  
-  int[][] map = {
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  {0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1},
-  };
+  int[][] map = 
+  {
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
  
  
   public void drawOverworld(){
@@ -113,6 +117,7 @@
   public void drawBattle(Trainer opponent, Trainer player){
     textSize(20);
     if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
+      delay(2000);
       battleOver = true;
       if (player.getTeamNumber() == 0) {
         battleMessage = "You lost the battle!";
@@ -141,7 +146,7 @@
    fill(255);
    rect(0,380,640,100);
    fill(0);
-    textSize(16);
+    textSize(15);
      if (battleState == 0) {
     text("1. " + player.getPokemon().getMove1(), 50, 410);
     text("2. " + player.getPokemon().getMove2(), 50, 430);
@@ -149,16 +154,16 @@
     text("4. " + player.getPokemon().getMove4(), 350, 430);
     } else if (battleState == 1 || battleState == 3) {
        if (opponent.getPokemon().getHP() <= 0){
-        moveResult = opponent.getPokemon().getName() + " fainted.";
+        moveResultMessage += opponent.getPokemon().getName() + " fainted.";
       opponent.removeTeam();
       text(moveResult, 50, 440);
     }
     if (player.getPokemon().getHP() <= 0){
-      moveResult = player.getPokemon().getName() + " fainted.";
+      moveResultMessage += player.getPokemon().getName() + " fainted.";
       player.removeTeam();
       text(moveResult, 50, 440);
     }
-        text(moveResultMessage, 50, 410);
+        text(moveResultMessage, 10, 410);
     }
   }
   }
@@ -190,7 +195,26 @@
   }
  
   void keyPressed() {
-    if (gameState == OVERWORLD) {
+     if (gameState == START_SCREEN) {
+    if (key == '1') {
+      addPokemonToTeam(new pokemonCharmander());
+    } else if (key == '2') {
+      addPokemonToTeam(new pokemonBulbasaur());
+    } else if (key == '3') {
+      addPokemonToTeam(new pokemonSquirtle());
+    } else if (key == '4') {
+      addPokemonToTeam(new pokemonEevee());
+    } else if (key == '5') {
+      addPokemonToTeam(new pokemonPikachu());
+    } else if (key == 'q') {
+      setDifficulty(1);
+    } else if (key == 'w') {
+      setDifficulty(2);
+    } else if (key == 'e') {
+      setDifficulty(3);
+    }
+     }
+   else if (gameState == OVERWORLD) {
       if (keyCode == LEFT) {
         if (playerX > 0) {
           playerX--;
@@ -243,22 +267,83 @@
   
   void setup(){
     size(640, 480);
-    player.addTeam(Charmander);
-    player.addTeam(Bulbasaur);
-    player.addTeam(Squirtle);
-    gymLeader.addTeam(Pikachu);
   }
  
   void draw() {
   background(255);
  
-  if (gameState == OVERWORLD) {
+  if (gameState == START_SCREEN) {
+    drawStartScreen();
+  } else if (gameState == OVERWORLD) {
     drawOverworld();
     if (checkTrainerProximity()) {
       gameState = BATTLE;
     }
   } else if (gameState == BATTLE) {
-    drawBattle(gymLeader,player);
-  }
+    drawBattle(gymLeader, player);
+  }}
  
+ void drawStartScreen() {
+  fill(0);
+  textSize(20);
+  text("Choose your Pokémon (press 1-5):", 10, 30);
+  text("1. Charmander", 10, 60);
+  PImage im = loadImage("CharmanderF.png");
+    im.resize(50,50);
+    image(im,130,30);
+  text("2. Bulbasaur", 10, 90);
+  PImage im2 = loadImage("BulbasaurF.png");
+    im2.resize(50,50);
+    image(im2,130,60);
+  text("3. Squirtle", 10, 120);
+  PImage im3 = loadImage("SquirtleF.png");
+    im3.resize(50,50);
+    image(im3,130,90);
+  text("4. Eevee", 10, 150);
+  PImage im4 = loadImage("EeveeF.png");
+    im4.resize(50,50);
+    image(im4,130,120);
+  text("5. Pikachu", 10, 180);
+  PImage im5 = loadImage("PikachuF.png");
+    im5.resize(50,50);
+    image(im5,130,150);
+  text(startScreenMessage, 10, 210);
+  text("Choose difficulty (press Q, W, E):", 10, 240);
+  text("Q: Easy", 10, 270);
+  text("W: Medium", 10, 300);
+  text("E: Hard", 10, 330);
 }
+
+void addPokemonToTeam(Pokemon pokemon) {
+  if (player.team.size() < 6) {
+    player.team.add(pokemon);
+    startScreenMessage = "Added " + pokemon.getName() + " to your team.";
+  } else {
+    startScreenMessage = "Your team is full!";
+  }
+}
+
+void setDifficulty(int level) {
+  if (player.team.size() > 0) {
+    gameState = OVERWORLD;
+    startScreenMessage = "Difficulty set to " + level;
+    if (level == 1){
+      gymLeader.team.add(new pokemonCharmander());
+      gymLeader.team.add(new pokemonBulbasaur());
+      gymLeader.team.add(new pokemonSquirtle());
+    } else if (level == 2){
+      gymLeader.team.add(new pokemonCharmander());
+      gymLeader.team.add(new pokemonBulbasaur());
+      gymLeader.team.add(new pokemonSquirtle());
+      gymLeader.team.add(new pokemonPikachu());
+      gymLeader.team.add(new pokemonEevee());
+    } else if (level == 3){
+      gymLeader.team.add(new pokemonMewtwo());
+    }
+  } else {
+    startScreenMessage = "Add at least one Pokémon to your team!";
+  }
+}
+
+
+ 
