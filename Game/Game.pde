@@ -288,5 +288,14 @@ void addPokemonToTeam(Pokemon pokemon) {
   }
 }
 
+void setDifficulty(int level) {
+  if (player.team.size() > 0) {
+    gameState = OVERWORLD;
+    startScreenMessage = "Difficulty set to " + level;
+  } else {
+    startScreenMessage = "Add at least one Pokémon to your team!";
+  }
+}
+
 
  
