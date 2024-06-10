@@ -117,6 +117,7 @@
   public void drawBattle(Trainer opponent, Trainer player){
     textSize(20);
     if (player.getTeamNumber() == 0 || opponent.getTeamNumber() == 0) {
+      delay(2000);
       battleOver = true;
       if (player.getTeamNumber() == 0) {
         battleMessage = "You lost the battle!";
@@ -311,6 +312,19 @@ void setDifficulty(int level) {
   if (player.team.size() > 0) {
     gameState = OVERWORLD;
     startScreenMessage = "Difficulty set to " + level;
+    if (level == 1){
+      gymLeader.team.add(new pokemonCharmander());
+      gymLeader.team.add(new pokemonBulbasaur());
+      gymLeader.team.add(new pokemonSquirtle());
+    } else if (level == 2){
+      gymLeader.team.add(new pokemonCharmander());
+      gymLeader.team.add(new pokemonBulbasaur());
+      gymLeader.team.add(new pokemonSquirtle());
+      gymLeader.team.add(new pokemonPikachu());
+      gymLeader.team.add(new pokemonEevee());
+    } else if (level == 3){
+      gymLeader.team.add(new pokemonMewtwo());
+    }
   } else {
     startScreenMessage = "Add at least one Pokémon to your team!";
   }
