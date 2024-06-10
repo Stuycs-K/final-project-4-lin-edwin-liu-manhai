@@ -30,7 +30,7 @@
   String moveResult = "";
   String movement = "Forward";
  
-  int[][] map = {
+  int[][] map = 
   {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -143,7 +143,7 @@
    fill(255);
    rect(0,380,640,100);
    fill(0);
-    textSize(16);
+    textSize(15);
      if (battleState == 0) {
     text("1. " + player.getPokemon().getMove1(), 50, 410);
     text("2. " + player.getPokemon().getMove2(), 50, 430);
@@ -151,16 +151,16 @@
     text("4. " + player.getPokemon().getMove4(), 350, 430);
     } else if (battleState == 1 || battleState == 3) {
        if (opponent.getPokemon().getHP() <= 0){
-        moveResult = opponent.getPokemon().getName() + " fainted.";
+        moveResultMessage += opponent.getPokemon().getName() + " fainted.";
       opponent.removeTeam();
       text(moveResult, 50, 440);
     }
     if (player.getPokemon().getHP() <= 0){
-      moveResult = player.getPokemon().getName() + " fainted.";
+      moveResultMessage += player.getPokemon().getName() + " fainted.";
       player.removeTeam();
       text(moveResult, 50, 440);
     }
-        text(moveResultMessage, 50, 410);
+        text(moveResultMessage, 10, 410);
     }
   }
   }
