@@ -278,4 +278,15 @@
   text("W: Medium", 10, 300);
   text("E: Hard", 10, 330);
 }
+
+void addPokemonToTeam(Pokemon pokemon) {
+  if (player.team.size() < 6) {
+    player.team.add(pokemon);
+    startScreenMessage = "Added " + pokemon.getName() + " to your team.";
+  } else {
+    startScreenMessage = "Your team is full!";
+  }
+}
+
+
  
